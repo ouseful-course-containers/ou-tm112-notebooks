@@ -7,15 +7,27 @@ RUN jupyter nbextension enable --py widgetsnbextension  --sys-prefix
 
 RUN pip install descartes scipy shapely
 
+
+
 COPY  ./install/Localization-master.zip ./Localization.zip
 RUN pip install Localization.zip
 RUN rm Localization.zip
 
-COPY --chown=jovyan:users ./notebooks/*.ipynb /home/$NB_USER/work/
 
+
+
+COPY ./notebooks/*.ipynb /home/$NB_USER/work/
+
+#COPY --chown=jovyan:users ./docs /home/$NB_USER/docs
 
 ENV DOCKERBUILD 1
-COPY --chown=jovyan:users jupyter_custom_files/ jupyter_custom_files/
+COPY jupyter_custom_files/ jupyter_custom_files/
+
 RUN jupyter_custom_files/jupyter_styling.sh
 
+
+
+USER root
 RUN rm -rf jupyter_custom_files
+RUN chown -R jovyan:users /home/$NB_USER/work/
+USER $NB_UID
