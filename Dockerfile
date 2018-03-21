@@ -17,6 +17,7 @@ RUN rm Localization.zip
 
 
 COPY ./notebooks/*.ipynb /home/$NB_USER/work/
+COPY ./notebooks/images/* /home/$NB_USER/work/images/
 
 #COPY --chown=jovyan:users ./docs /home/$NB_USER/docs
 
