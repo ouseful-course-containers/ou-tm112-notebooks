@@ -1,0 +1,3 @@
+folium
+git+https://github.com/ouseful-backup/Localization.git
+#./install/Localization-master.zip
