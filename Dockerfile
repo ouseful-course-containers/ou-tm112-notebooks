@@ -5,7 +5,7 @@ RUN pip install folium
 RUN pip install ipywidgets
 RUN jupyter nbextension enable --py widgetsnbextension  --sys-prefix
 
-RUN pip install descartes scipy shapely
+RUN pip install descartes scipy shapely pandas
 
 
 
