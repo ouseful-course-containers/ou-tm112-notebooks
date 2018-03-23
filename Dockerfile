@@ -22,6 +22,7 @@ COPY ./notebooks/*.py /home/$NB_USER/work/
 COPY ./notebooks/images/* /home/$NB_USER/work/images/
 
 COPY ./README.md /home/$NB_USER/README.md
+COPY ./Using*.ipynb /home/$NB_USER/
 
 #COPY --chown=jovyan:users ./docs /home/$NB_USER/docs
 
@@ -35,4 +36,5 @@ RUN jupyter_custom_files/jupyter_styling.sh
 USER root
 RUN rm -rf jupyter_custom_files
 RUN chown -R jovyan:users /home/$NB_USER/work/
+RUN chown -R jovyan:users /home/$NB_USER/
 USER $NB_UID
