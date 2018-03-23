@@ -8,17 +8,18 @@ RUN jupyter nbextension enable --py widgetsnbextension  --sys-prefix
 RUN pip install descartes scipy shapely pandas
 
 
-
+#For some reason, installing via pip and git+ doesn't work?
 COPY  ./install/Localization-master.zip ./Localization.zip
 RUN pip install Localization.zip
 RUN rm Localization.zip
 
+COPY  ./install/ipython_magic_folium-master.zip ./ipython_magic_folium.zip
+RUN pip install ipython_magic_folium.zip
+RUN rm ipython_magic_folium-master.zip
 
-
-RUN mv /home/$NB_USER/work /home/$NB_USER/notebooks
-COPY ./notebooks/*.ipynb /home/$NB_USER/notebooks/
-COPY ./notebooks/*.py /home/$NB_USER/notebooks/
-COPY ./notebooks/images/* /home/$NB_USER/notebooks/images/
+COPY ./notebooks/*.ipynb /home/$NB_USER/work/
+COPY ./notebooks/*.py /home/$NB_USER/work/
+COPY ./notebooks/images/* /home/$NB_USER/work/images/
 
 #COPY --chown=jovyan:users ./docs /home/$NB_USER/docs
 
