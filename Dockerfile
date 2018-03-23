@@ -15,10 +15,10 @@ RUN rm Localization.zip
 
 
 
-
-COPY ./notebooks/*.ipynb /home/$NB_USER/work/
-COPY ./notebooks/*.py /home/$NB_USER/work/
-COPY ./notebooks/images/* /home/$NB_USER/work/images/
+RUN mv /home/$NB_USER/work /home/$NB_USER/notebooks
+COPY ./notebooks/*.ipynb /home/$NB_USER/notebooks/
+COPY ./notebooks/*.py /home/$NB_USER/notebooks/
+COPY ./notebooks/images/* /home/$NB_USER/notebooks/images/
 
 #COPY --chown=jovyan:users ./docs /home/$NB_USER/docs
 
