@@ -21,6 +21,8 @@ COPY ./notebooks/*.ipynb /home/$NB_USER/work/
 COPY ./notebooks/*.py /home/$NB_USER/work/
 COPY ./notebooks/images/* /home/$NB_USER/work/images/
 
+COPY ./README.md /home/$NB_USER/README.md
+
 #COPY --chown=jovyan:users ./docs /home/$NB_USER/docs
 
 ENV DOCKERBUILD 1
