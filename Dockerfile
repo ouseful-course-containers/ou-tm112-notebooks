@@ -15,7 +15,7 @@ RUN rm Localization.zip
 
 COPY  ./install/ipython_magic_folium-master.zip ./ipython_magic_folium.zip
 RUN pip install ipython_magic_folium.zip
-RUN rm ipython_magic_folium-master.zip
+RUN rm ipython_magic_folium.zip
 
 COPY ./notebooks/*.ipynb /home/$NB_USER/work/
 COPY ./notebooks/*.py /home/$NB_USER/work/
