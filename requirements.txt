@@ -1,3 +1,4 @@
 folium
 git+https://github.com/ouseful-backup/Localization.git
-#./install/Localization-master.zip
+git+https://github.com/psychemedia/ipython_magic_folium.git
+
