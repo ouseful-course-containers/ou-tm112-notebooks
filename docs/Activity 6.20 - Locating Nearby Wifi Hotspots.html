@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8">
+<head><meta charset="utf-8" />
 <title>Activity 6.20 - Locating Nearby Wifi Hotspots</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
@@ -11723,10 +11723,45 @@ mainly to be overridden in profile/static/custom/custom.css
 This will always be an empty file in IPython
 */
 
+/* OU Styling
+OU logo available to stylesheet at url('oulogo-56.jpg')
+*/
+
 .activity {
     font-size: 20px;
     font-style: italic;
 }
+
+#header-container.container {height: 72px;}
+#ipython_notebook img{
+	/* http://stackoverflow.com/a/24633671/454773 */
+	display:block;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	background: url(OU-logo-83x65.png) no-repeat;
+  	width: 83px; /* Width of new image */
+  	height: 65px; /* Height of new image */
+  	padding-left: 83px; /* Equal to width of new image */
+
+}
+
+.ou_comment_outer {
+    background-color: #eda7c3;
+}
+
+.ou_comment_prompt {
+    background-color: #f4cadb;
+}
+
+.ou_activity_outer {
+    background-color: #c8ecff;
+}
+
+
+.ou_activity_prompt {
+    background-color: #ecf6ff;
+}
+
     </style>
 
 
@@ -11784,17 +11819,14 @@ div#notebook {
 <body>
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
-    <div><img align="left" src='assets/ounewlogo.png' alt='OU logo' /></div>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<br/>
-<p><strong>STATIC HTML EXPORT OF EXECUTED JUPYTER NOTEBOOK.</strong></p>
-<p><em>This is a static HTML web page export of an executed notebook that shows the sort of thing you might expect to see having executed the live notebooks. To access the live notebooks, refer to the course materials.</em></p>
-<hr/>
-<h1 id="Activity-6.20---Locating-Nearby-WiFi-Hotspots">Activity 6.20 - Locating Nearby WiFi Hotspots<a class="anchor-link" href="#Activity-6.20---Locating-Nearby-WiFi-Hotspots">¶</a></h1><p>In the same way that we can use the Google geolocation API to look up the location of a mobile phone cell tower (<a href="Activity%206.16%20-%20Cell%20Tower%20Lookup.ipynb">Activity 6.16 - Cell Tower Lookup.ipynb</a>), we can also use it to look up the location of a WiFi hotspot from its BSSID.</p>
+<h1 id="Activity-6.20---Locating-Nearby-WiFi-Hotspots">Activity 6.20 - Locating Nearby WiFi Hotspots<a class="anchor-link" href="#Activity-6.20---Locating-Nearby-WiFi-Hotspots">&#182;</a></h1><p>As well as looking up cell tower locations, we can also use third party services (with varying degrees of success!) to look up the location of WiFi hotspots from uniquely identifying information that is disclosed by every single WiFi router.</p>
+<p>For example, <a href="https://wigle.net/">WiGLE: Wireless Network Mapping</a> allows you to see the location of the millions of router locations in its database via an interactive map. The locations are collected by wardriving - driving along public roads, listening out for WiFi hotspots, grabbing their name (SSID) and unique identfier (BSSID) and associating them with your current location. That's why the locations on the WiGLE interactive map typically appear by the roadside. (Zoom the map to show your location to see how many hotspots have been identifed near it.)</p>
+<p>In the same way that we could in principle use a service such as the Google geolocation or <code>openbmap</code> APIs to look up the location of a mobile phone cell tower (<a href="Activity%206.16%20-%20Cell%20Tower%20Lookup.ipynb">Activity 6.16 - Cell Tower Lookup.ipynb</a>), we can also use them to look up the location of a WiFi hotspot from its BSSID (<em>Basic Service Set IDentifier</em>).</p>
 <p>If your computer has wifi access and is in range of one or more WiFi hostpots, you should be able to identify the MAC addresses of them using the following commands. The name of each hotspot in range should be given as the SSID, and the code you need for the lookup as the BSSID.</p>
 <p>On your computer, run the appropriate command depending on the operating system you are using. <em>In order to detect nearby Wifi hostspots, you will need to ensure that your computer's WiFi is turned on.</em> The BSSID and SSID values should be displayed in the output report.</p>
 
@@ -11805,7 +11837,16 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Mac">Mac<a class="anchor-link" href="#Mac">¶</a></h3><p>From a terminal, run the command:</p>
+<h3 id="Notebook-Terminal">Notebook Terminal<a class="anchor-link" href="#Notebook-Terminal">&#182;</a></h3><p>If you are running the notebook from a notebook server installed directly on your own computer, you should be able to run the following commands in a <a href="/j/terminals/1">Jupyter terminal launched from here</a>. If you are using an online hosted notebook, or a virtualised notebook server running in a virtual machine or Docker container running on your computer, you will need to run the following commands using a terminal/command prompt launched from your host desktop.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Mac">Mac<a class="anchor-link" href="#Mac">&#182;</a></h3><p>From a terminal, run the command:</p>
 <p><code>/System/Library/PrivateFrameworks/Apple80211.framework/Resources/airport -s</code></p>
 
 </div>
@@ -11815,7 +11856,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Windows">Windows<a class="anchor-link" href="#Windows">¶</a></h3><p>From a command prompt, run the command:</p>
+<h3 id="Windows">Windows<a class="anchor-link" href="#Windows">&#182;</a></h3><p>From a command prompt, run the command:</p>
 <p><code>netsh wlan show network mode=bssid</code></p>
 
 </div>
@@ -11825,7 +11866,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Linux">Linux<a class="anchor-link" href="#Linux">¶</a></h3><p>From a terminal, run the command:</p>
+<h3 id="Linux">Linux<a class="anchor-link" href="#Linux">&#182;</a></h3><p>From a terminal, run the command:</p>
 <p><code>iwlist wlan0 scan</code></p>
 
 </div>
@@ -11835,18 +11876,39 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Looking-Up-the-Location-of-the-Hostpost-MAC-Addresses-/-BSSIDs">Looking Up the Location of the Hostpost MAC Addresses / BSSIDs<a class="anchor-link" href="#Looking-Up-the-Location-of-the-Hostpost-MAC-Addresses-/-BSSIDs">¶</a></h2><p>To call the Google webservice to look up the geographical locations of cell towers or wifi hotspots from their IDs, you will need to get a Google Geolocation API token: visit <a href="https://developers.google.com/maps/documentation/geocoding/get-api-key">https://developers.google.com/maps/documentation/geocoding/get-api-key</a> and follow the instructions on how to get a key for the geolocation API and enable it.</p>
-<p>When you have obtained your key, use it to set the <code>googleMapsAPIkey</code> variable below.</p>
+<h2 id="Checking-the-Location-Using-WiGLE">Checking the Location Using WiGLE<a class="anchor-link" href="#Checking-the-Location-Using-WiGLE">&#182;</a></h2><p>If you zoom in to you location on the WiGLE map, you can see if any of the nearby routers you have identifed are in its database by filtering on the SSID or BSSID.</p>
+<p>Note that if you enabled location services in your browser when visiting the WiGLE page, it has access to your current location. If you are also searching for particular SSIDs or BSSIDs, it may loosely associate those IDs with your location (I don't know if it actually does... But it could...)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Looking-Up-the-Location-of-Hotspot-MAC-Addresses-/-BSSIDs">Looking Up the Location of Hotspot MAC Addresses / BSSIDs<a class="anchor-link" href="#Looking-Up-the-Location-of-Hotspot-MAC-Addresses-/-BSSIDs">&#182;</a></h2><p>The Google Geolocation API and the <code>openbmap</code> API are both capable of looking up the geographical locations of cell towers or WiFi hotspots from their IDs and both called, and respond, in the same way.</p>
+<p>The <code>openbmap</code> service also publishes the data that is exposed via its API as <a href="https://radiocells.org/downloads/raw_data">free to download open data</a> (the files are quite large though!).</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Walk-through-of-How-to-Call-the-API">Walk-through of How to Call the API<a class="anchor-link" href="#Walk-through-of-How-to-Call-the-API">&#182;</a></h3><p>The following walk through demonstrates how to call the API. If you have a Google geolocation API key (you are not required to have one, and you are not expected to sign up for one), set the value of the <code>APIkey</code> variable below using it. If you want to try to use the <code>openbmap</code> API, set the APIkey value to an empty string (<code>APIkey=''</code>). To just work through the activity without calling either API, set <code>APIkey=None</code>.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [8]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">googleMapsAPIkey</span><span class="o">=</span><span class="s2">"KEY"</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># APIkey=&#39;YOUR GOOGLE LOCATION API ENABLED KEY&#39; #Insert your API key if you already have one &amp; want to use it</span>
+<span class="c1"># APIkey=&#39;&#39; #Set the key value to an empty string if you want to try to use the openbmap service</span>
+<span class="n">APIkey</span><span class="o">=</span><span class="kc">None</span> <span class="c1">#Set the value to None to skip trying to call either API</span>
 </pre></div>
 
 </div>
@@ -11858,17 +11920,17 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Add the BSSID / MAC address of <em>two</em> or more hotspots to the following Python list:</p>
+<p>Add the BSSID / MAC address of <em>two</em> or more hotspots to the following Python list (if there is only one in range, try with that):</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [9]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hotspots</span> <span class="o">=</span> <span class="p">[</span>  <span class="s1">'one:of:your:hotspot:mac:addresses'</span><span class="p">,</span> <span class="s1">'another:of:your:hotspot:mac:addresses'</span><span class="p">]</span> 
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">hotspots</span> <span class="o">=</span> <span class="p">[</span>  <span class="s1">&#39;one:of:your:hotspot:mac:addresses&#39;</span><span class="p">,</span> <span class="s1">&#39;another:of:your:hotspot:mac:addresses&#39;</span><span class="p">]</span> 
 </pre></div>
 
 </div>
@@ -11880,7 +11942,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To make a request to the geolocation service, we need to post a correctly configured object to it. The message format is described in the <a href="https://developers.google.com/maps/documentation/geolocation/intro#wifi_access_point_object">Google geolocation service documententation</a>.</p>
+<p>To make a request to the geolocation service, we need to post a correctly configured object to it. The message format is described in the <a href="https://developers.google.com/maps/documentation/geolocation/intro#wifi_access_point_object">Google geolocation service documententation</a> and in a simpler way by the <a href="https://radiocells.org/geolocation"><code>openbmap</code> API docs</a>.</p>
 <p>Specifically, we need to pass a list of wifi access point objects as part of a <code>wifiAccessPoints</code> list. The minimal definition of a wifi access point object takes the form: <code>{'macAddress': 'A:VALID:MAC:ADDRESS'}</code>.</p>
 
 </div>
@@ -11888,33 +11950,16 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [10]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [11]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">postjson</span><span class="o">=</span><span class="p">{</span><span class="s1">'wifiAccessPoints'</span><span class="p">:[]}</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">postjson</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;wifiAccessPoints&#39;</span><span class="p">:[]}</span>
 
 <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">hotspots</span><span class="p">:</span>
-    <span class="n">postjson</span><span class="p">[</span><span class="s1">'wifiAccessPoints'</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">'macAddress'</span><span class="p">:</span><span class="n">h</span><span class="p">})</span>
+    <span class="n">postjson</span><span class="p">[</span><span class="s1">&#39;wifiAccessPoints&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;macAddress&#39;</span><span class="p">:</span><span class="n">h</span><span class="p">})</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">'JSON posted to Google service: '</span><span class="p">,</span><span class="n">postjson</span><span class="p">)</span>
-<span class="n">url</span><span class="o">=</span><span class="s1">'https://www.googleapis.com/geolocation/v1/geolocate?key=</span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">googleMapsAPIkey</span><span class="p">)</span>
-
-
-<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">postjson</span><span class="p">)</span>
-<span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="c1">#Preview the arguments</span>
+<span class="n">postjson</span>
 </pre></div>
 
 </div>
@@ -11927,28 +11972,48 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>JSON posted to Google service:  {'wifiAccessPoints': [{'macAddress': 'one:of:your:hotspot:mac:addresses'}, {'macAddress': 'another:of:your:hotspot:mac:addresses'}]}
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[11]:</div>
+<div class="prompt output_prompt">Out[3]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{'location': {'lat': 50.659079, 'lng': -1.149397}, 'accuracy': 6664.0}</pre>
+<pre>{&#39;wifiAccessPoints&#39;: [{&#39;macAddress&#39;: &#39;one:of:your:hotspot:mac:addresses&#39;},
+  {&#39;macAddress&#39;: &#39;another:of:your:hotspot:mac:addresses&#39;}]}</pre>
 </div>
 
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c1">#Set the url to the appropriate API endpoint location</span>
+<span class="n">url</span><span class="o">=</span><span class="kc">None</span>
+
+<span class="k">if</span> <span class="n">APIkey</span><span class="p">:</span>
+    <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://www.googleapis.com/geolocation/v1/geolocate?key=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">APIkey</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">APIkey</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://radiocells.org/backend/geolocate&quot;</span>
+    
+    
+<span class="k">if</span> <span class="n">url</span><span class="p">:</span>
+    <span class="c1">#Make the request</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">header</span><span class="p">,</span><span class="n">json</span><span class="o">=</span><span class="n">postjson</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">r</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+        <span class="c1"># display the response if something went wrong...</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+</div>
 </div>
 </div>
 
@@ -11958,17 +12023,51 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If the location of the devices with the specified MAC addresses are known, a location is determined and returned as a latitude / longitude pair and a specified accuracy.</p>
-<p>The latitude / longitude pair can the be used to identify the approximate location on a map. Once again, we can use the <code>ipython_magic_folium</code> magic to help us create a quick map:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [12]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> folium_magic
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#If we get a valid response</span>
+<span class="k">if</span> <span class="n">APIkey</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+    <span class="c1">#Obtain the JSON response to a Python dict object</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A typical response would be of the form:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="err">&#39;location&#39;:</span> <span class="err">{&#39;lat&#39;:</span> <span class="err">50.659079,</span> <span class="err">&#39;lng&#39;:</span> <span class="err">-1.149397</span><span class="p">}</span><span class="err">,</span> <span class="err">&#39;accuracy&#39;:</span> <span class="mf">6664.0</span><span class="err">}</span>
+</pre></div>
+<p>Extract the latitude and longitude values:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">APIkey</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">r</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+    <span class="c1">#Here&#39;s one I prepared earlier</span>
+    <span class="n">jsondata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;lat&#39;</span><span class="p">:</span><span class="mf">50.659079</span><span class="p">,</span> <span class="s1">&#39;lng&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">1.149397</span><span class="p">}}</span>
+
+<span class="n">lat</span> <span class="o">=</span> <span class="n">jsondata</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">jsondata</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;lng&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;JSON: </span><span class="si">{}</span><span class="se">\n</span><span class="s1">lat,lon = (</span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">jsondata</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -11985,8 +12084,8 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>The folium_magic extension is already loaded. To reload it, use:
-  %reload_ext folium_magic
+<pre>JSON: {&#39;location&#39;: {&#39;lat&#39;: 50.659079, &#39;lng&#39;: -1.149397}}
+lat,lon = (50.659079, -1.149397)
 </pre>
 </div>
 </div>
@@ -11999,18 +12098,18 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Extract the latitude and longitude values and then plot the map:</p>
+<p>The latitude / longitude pair can the be used to identify the approximate location on a map.</p>
+<p>Once again, we can use the <code>ipython_magic_folium</code> magic to help us create a quick map:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [13]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">'location'</span><span class="p">][</span><span class="s1">'lat'</span><span class="p">]</span>
-<span class="n">lon</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">'location'</span><span class="p">][</span><span class="s1">'lng'</span><span class="p">]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> folium_magic
 </pre></div>
 
 </div>
@@ -12020,10 +12119,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [14]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">folium_map</span> -m $lat,$lon,"Wifi hotspot location" -z 14
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">folium_map</span> -m $lat,$lon,&quot;Wifi hotspot location&quot; -z 14
 </pre></div>
 
 </div>
@@ -12036,12 +12135,12 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[14]:</div>
+<div class="prompt output_prompt">Out[8]:</div>
 
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
-<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="data:text/html;charset=utf-8;base64,PCFET0NUWVBFIGh0bWw+CjxoZWFkPiAgICAKICAgIDxtZXRhIGh0dHAtZXF1aXY9ImNvbnRlbnQtdHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04IiAvPgogICAgPHNjcmlwdD5MX1BSRUZFUl9DQU5WQVMgPSBmYWxzZTsgTF9OT19UT1VDSCA9IGZhbHNlOyBMX0RJU0FCTEVfM0QgPSBmYWxzZTs8L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL2xlYWZsZXRAMS4yLjAvZGlzdC9sZWFmbGV0LmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2FqYXguZ29vZ2xlYXBpcy5jb20vYWpheC9saWJzL2pxdWVyeS8xLjExLjEvanF1ZXJ5Lm1pbi5qcyI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4yLjAvanMvYm9vdHN0cmFwLm1pbi5qcyI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvTGVhZmxldC5hd2Vzb21lLW1hcmtlcnMvMi4wLjIvbGVhZmxldC5hd2Vzb21lLW1hcmtlcnMuanMiPjwvc2NyaXB0PgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL2xlYWZsZXRAMS4yLjAvZGlzdC9sZWFmbGV0LmNzcyIgLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4yLjAvY3NzL2Jvb3RzdHJhcC5taW4uY3NzIiAvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLXRoZW1lLm1pbi5jc3MiIC8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vZm9udC1hd2Vzb21lLzQuNi4zL2Nzcy9mb250LWF3ZXNvbWUubWluLmNzcyIgLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvTGVhZmxldC5hd2Vzb21lLW1hcmtlcnMvMi4wLjIvbGVhZmxldC5hd2Vzb21lLW1hcmtlcnMuY3NzIiAvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL3Jhd2dpdC5jb20vcHl0aG9uLXZpc3VhbGl6YXRpb24vZm9saXVtL21hc3Rlci9mb2xpdW0vdGVtcGxhdGVzL2xlYWZsZXQuYXdlc29tZS5yb3RhdGUuY3NzIiAvPgogICAgPHN0eWxlPmh0bWwsIGJvZHkge3dpZHRoOiAxMDAlO2hlaWdodDogMTAwJTttYXJnaW46IDA7cGFkZGluZzogMDt9PC9zdHlsZT4KICAgIDxzdHlsZT4jbWFwIHtwb3NpdGlvbjphYnNvbHV0ZTt0b3A6MDtib3R0b206MDtyaWdodDowO2xlZnQ6MDt9PC9zdHlsZT4KICAgIAogICAgICAgICAgICA8c3R5bGU+ICNtYXBfZDNmZDU2OWQ5NTA5NDUwZDlkM2NiNTE0ZGZjN2NmNTUgewogICAgICAgICAgICAgICAgcG9zaXRpb24gOiByZWxhdGl2ZTsKICAgICAgICAgICAgICAgIHdpZHRoIDogMTAwLjAlOwogICAgICAgICAgICAgICAgaGVpZ2h0OiAxMDAuMCU7CiAgICAgICAgICAgICAgICBsZWZ0OiAwLjAlOwogICAgICAgICAgICAgICAgdG9wOiAwLjAlOwogICAgICAgICAgICAgICAgfQogICAgICAgICAgICA8L3N0eWxlPgogICAgICAgIAo8L2hlYWQ+Cjxib2R5PiAgICAKICAgIAogICAgICAgICAgICA8ZGl2IGNsYXNzPSJmb2xpdW0tbWFwIiBpZD0ibWFwX2QzZmQ1NjlkOTUwOTQ1MGQ5ZDNjYjUxNGRmYzdjZjU1IiA+PC9kaXY+CiAgICAgICAgCjwvYm9keT4KPHNjcmlwdD4gICAgCiAgICAKCiAgICAgICAgICAgIAogICAgICAgICAgICAgICAgdmFyIGJvdW5kcyA9IG51bGw7CiAgICAgICAgICAgIAoKICAgICAgICAgICAgdmFyIG1hcF9kM2ZkNTY5ZDk1MDk0NTBkOWQzY2I1MTRkZmM3Y2Y1NSA9IEwubWFwKAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJ21hcF9kM2ZkNTY5ZDk1MDk0NTBkOWQzY2I1MTRkZmM3Y2Y1NScsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB7Y2VudGVyOiBbNTAuNjU5MDc5LC0xLjE0OTM5N10sCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB6b29tOiAxNCwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG1heEJvdW5kczogYm91bmRzLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbGF5ZXJzOiBbXSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHdvcmxkQ29weUp1bXA6IGZhbHNlLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY3JzOiBMLkNSUy5FUFNHMzg1NwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9KTsKICAgICAgICAgICAgCiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIHRpbGVfbGF5ZXJfMjhhMjIzZWQ0MzNiNGM4MThmZjBlNmJjMzlkNDI1ZjIgPSBMLnRpbGVMYXllcigKICAgICAgICAgICAgICAgICdodHRwczovL3tzfS50aWxlLm9wZW5zdHJlZXRtYXAub3JnL3t6fS97eH0ve3l9LnBuZycsCiAgICAgICAgICAgICAgICB7CiAgImF0dHJpYnV0aW9uIjogbnVsbCwKICAiZGV0ZWN0UmV0aW5hIjogZmFsc2UsCiAgIm1heFpvb20iOiAxOCwKICAibWluWm9vbSI6IDEsCiAgIm5vV3JhcCI6IGZhbHNlLAogICJzdWJkb21haW5zIjogImFiYyIKfQogICAgICAgICAgICAgICAgKS5hZGRUbyhtYXBfZDNmZDU2OWQ5NTA5NDUwZDlkM2NiNTE0ZGZjN2NmNTUpOwogICAgICAgIAogICAgCgogICAgICAgICAgICB2YXIgbWFya2VyX2Q3N2IwNTc0NzQ5MDQ1MzQ4YTI3Y2FiYWVkMGExNmM3ID0gTC5tYXJrZXIoCiAgICAgICAgICAgICAgICBbNTAuNjU5MDc5LC0xLjE0OTM5N10sCiAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgaWNvbjogbmV3IEwuSWNvbi5EZWZhdWx0KCkKICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICApCiAgICAgICAgICAgICAgICAuYWRkVG8obWFwX2QzZmQ1NjlkOTUwOTQ1MGQ5ZDNjYjUxNGRmYzdjZjU1KTsKICAgICAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIHBvcHVwXzZhNjhhYTcyNjkzZjRiYjViMzQ3MjM4NGIwZmYwNGIyID0gTC5wb3B1cCh7bWF4V2lkdGg6ICczMDAnfSk7CgogICAgICAgICAgICAKICAgICAgICAgICAgICAgIHZhciBodG1sX2NmYjg0YWYxY2Q5NzRiZjdiZGViNjVlMzlmNjk5MDIyID0gJCgnPGRpdiBpZD0iaHRtbF9jZmI4NGFmMWNkOTc0YmY3YmRlYjY1ZTM5ZjY5OTAyMiIgc3R5bGU9IndpZHRoOiAxMDAuMCU7IGhlaWdodDogMTAwLjAlOyI+V2lmaSBob3RzcG90IGxvY2F0aW9uPC9kaXY+JylbMF07CiAgICAgICAgICAgICAgICBwb3B1cF82YTY4YWE3MjY5M2Y0YmI1YjM0NzIzODRiMGZmMDRiMi5zZXRDb250ZW50KGh0bWxfY2ZiODRhZjFjZDk3NGJmN2JkZWI2NWUzOWY2OTkwMjIpOwogICAgICAgICAgICAKCiAgICAgICAgICAgIG1hcmtlcl9kNzdiMDU3NDc0OTA0NTM0OGEyN2NhYmFlZDBhMTZjNy5iaW5kUG9wdXAocG9wdXBfNmE2OGFhNzI2OTNmNGJiNWIzNDcyMzg0YjBmZjA0YjIpOwoKICAgICAgICAgICAgCiAgICAgICAgCjwvc2NyaXB0Pg==" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div>
+<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="data:text/html;charset=utf-8;base64,PCFET0NUWVBFIGh0bWw+CjxoZWFkPiAgICAKICAgIDxtZXRhIGh0dHAtZXF1aXY9ImNvbnRlbnQtdHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04IiAvPgogICAgPHNjcmlwdD5MX1BSRUZFUl9DQU5WQVM9ZmFsc2U7IExfTk9fVE9VQ0g9ZmFsc2U7IExfRElTQUJMRV8zRD1mYWxzZTs8L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL2xlYWZsZXRAMS4zLjQvZGlzdC9sZWFmbGV0LmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2FqYXguZ29vZ2xlYXBpcy5jb20vYWpheC9saWJzL2pxdWVyeS8xLjExLjEvanF1ZXJ5Lm1pbi5qcyI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4yLjAvanMvYm9vdHN0cmFwLm1pbi5qcyI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvTGVhZmxldC5hd2Vzb21lLW1hcmtlcnMvMi4wLjIvbGVhZmxldC5hd2Vzb21lLW1hcmtlcnMuanMiPjwvc2NyaXB0PgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL2xlYWZsZXRAMS4zLjQvZGlzdC9sZWFmbGV0LmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLm1pbi5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4yLjAvY3NzL2Jvb3RzdHJhcC10aGVtZS5taW4uY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vZm9udC1hd2Vzb21lLzQuNi4zL2Nzcy9mb250LWF3ZXNvbWUubWluLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9MZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy8yLjAuMi9sZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9yYXdjZG4uZ2l0aGFjay5jb20vcHl0aG9uLXZpc3VhbGl6YXRpb24vZm9saXVtL21hc3Rlci9mb2xpdW0vdGVtcGxhdGVzL2xlYWZsZXQuYXdlc29tZS5yb3RhdGUuY3NzIi8+CiAgICA8c3R5bGU+aHRtbCwgYm9keSB7d2lkdGg6IDEwMCU7aGVpZ2h0OiAxMDAlO21hcmdpbjogMDtwYWRkaW5nOiAwO308L3N0eWxlPgogICAgPHN0eWxlPiNtYXAge3Bvc2l0aW9uOmFic29sdXRlO3RvcDowO2JvdHRvbTowO3JpZ2h0OjA7bGVmdDowO308L3N0eWxlPgogICAgCiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLAogICAgICAgIGluaXRpYWwtc2NhbGU9MS4wLCBtYXhpbXVtLXNjYWxlPTEuMCwgdXNlci1zY2FsYWJsZT1ubyIgLz4KICAgIDxzdHlsZT4jbWFwXzM5ZDA1Y2NkOTE2OTQzNTRhNGVjMjY2NDIyM2EyYTc1IHsKICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7CiAgICAgICAgd2lkdGg6IDEwMC4wJTsKICAgICAgICBoZWlnaHQ6IDEwMC4wJTsKICAgICAgICBsZWZ0OiAwLjAlOwogICAgICAgIHRvcDogMC4wJTsKICAgICAgICB9CiAgICA8L3N0eWxlPgo8L2hlYWQ+Cjxib2R5PiAgICAKICAgIAogICAgPGRpdiBjbGFzcz0iZm9saXVtLW1hcCIgaWQ9Im1hcF8zOWQwNWNjZDkxNjk0MzU0YTRlYzI2NjQyMjNhMmE3NSIgPjwvZGl2Pgo8L2JvZHk+CjxzY3JpcHQ+ICAgIAogICAgCiAgICAKICAgICAgICB2YXIgYm91bmRzID0gbnVsbDsKICAgIAoKICAgIHZhciBtYXBfMzlkMDVjY2Q5MTY5NDM1NGE0ZWMyNjY0MjIzYTJhNzUgPSBMLm1hcCgKICAgICAgICAnbWFwXzM5ZDA1Y2NkOTE2OTQzNTRhNGVjMjY2NDIyM2EyYTc1JywgewogICAgICAgIGNlbnRlcjogWzUwLjY1OTA3OSwgLTEuMTQ5Mzk3XSwKICAgICAgICB6b29tOiAxNCwKICAgICAgICBtYXhCb3VuZHM6IGJvdW5kcywKICAgICAgICBsYXllcnM6IFtdLAogICAgICAgIHdvcmxkQ29weUp1bXA6IGZhbHNlLAogICAgICAgIGNyczogTC5DUlMuRVBTRzM4NTcsCiAgICAgICAgem9vbUNvbnRyb2w6IHRydWUsCiAgICAgICAgfSk7CgogICAgCiAgICAKICAgIHZhciB0aWxlX2xheWVyX2U5YzU0ZWRhNDY5YjQxYjU4MzNjYzdiMmFjNzMxNDc2ID0gTC50aWxlTGF5ZXIoCiAgICAgICAgJ2h0dHBzOi8ve3N9LnRpbGUub3BlbnN0cmVldG1hcC5vcmcve3p9L3t4fS97eX0ucG5nJywKICAgICAgICB7CiAgICAgICAgImF0dHJpYnV0aW9uIjogbnVsbCwKICAgICAgICAiZGV0ZWN0UmV0aW5hIjogZmFsc2UsCiAgICAgICAgIm1heE5hdGl2ZVpvb20iOiAxOCwKICAgICAgICAibWF4Wm9vbSI6IDE4LAogICAgICAgICJtaW5ab29tIjogMCwKICAgICAgICAibm9XcmFwIjogZmFsc2UsCiAgICAgICAgIm9wYWNpdHkiOiAxLAogICAgICAgICJzdWJkb21haW5zIjogImFiYyIsCiAgICAgICAgInRtcyI6IGZhbHNlCn0pLmFkZFRvKG1hcF8zOWQwNWNjZDkxNjk0MzU0YTRlYzI2NjQyMjNhMmE3NSk7CiAgICAKICAgICAgICB2YXIgbWFya2VyXzMzMjllNWJjNWI5ZTQ1MDA5ZTNmZTE2YThiNWIwODE4ID0gTC5tYXJrZXIoCiAgICAgICAgICAgIFs1MC42NTkwNzksIC0xLjE0OTM5N10sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIGljb246IG5ldyBMLkljb24uRGVmYXVsdCgpCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzM5ZDA1Y2NkOTE2OTQzNTRhNGVjMjY2NDIyM2EyYTc1KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgcG9wdXBfODAyNDVlMzk4N2U4NGIwNTk5YjNiODNiYmJlYmU4NGIgPSBMLnBvcHVwKHttYXhXaWR0aDogJzMwMCcKICAgICAgICAgICAgCiAgICAgICAgICAgIH0pOwoKICAgICAgICAgICAgCiAgICAgICAgICAgICAgICB2YXIgaHRtbF84MTRlNTA5NzljYjI0MTY2YjJkMTA1ZmFlYTM4YzYzNiA9ICQoYDxkaXYgaWQ9Imh0bWxfODE0ZTUwOTc5Y2IyNDE2NmIyZDEwNWZhZWEzOGM2MzYiIHN0eWxlPSJ3aWR0aDogMTAwLjAlOyBoZWlnaHQ6IDEwMC4wJTsiPldpZmkgaG90c3BvdCBsb2NhdGlvbjwvZGl2PmApWzBdOwogICAgICAgICAgICAgICAgcG9wdXBfODAyNDVlMzk4N2U4NGIwNTk5YjNiODNiYmJlYmU4NGIuc2V0Q29udGVudChodG1sXzgxNGU1MDk3OWNiMjQxNjZiMmQxMDVmYWVhMzhjNjM2KTsKICAgICAgICAgICAgCgogICAgICAgICAgICBtYXJrZXJfMzMyOWU1YmM1YjllNDUwMDllM2ZlMTZhOGI1YjA4MTguYmluZFBvcHVwKHBvcHVwXzgwMjQ1ZTM5ODdlODRiMDU5OWIzYjgzYmJiZWJlODRiKQogICAgICAgICAgICA7CgogICAgICAgICAgICAKICAgICAgICAKPC9zY3JpcHQ+" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div>
 </div>
 
 </div>
@@ -12055,6 +12154,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The first time I tried this activity, I have to admit it felt a little bit creepy knowing that I could detect the physical location of my home location from the MAC addresses of my neighbours' routers.</p>
+<p>(Note — the dummy location selected above corresponds to an arbitrarily selected location and not my home location! If it corresponds to your house, or the house of someone you know, yes, that would be <em>really</em> creepy, but purely down to a chance occurrence!)</p>
 
 </div>
 </div>

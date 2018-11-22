@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta charset="utf-8">
+<head><meta charset="utf-8" />
 <title>Activity 6.16 - Cell Tower Lookup</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
@@ -11723,10 +11723,45 @@ mainly to be overridden in profile/static/custom/custom.css
 This will always be an empty file in IPython
 */
 
+/* OU Styling
+OU logo available to stylesheet at url('oulogo-56.jpg')
+*/
+
 .activity {
     font-size: 20px;
     font-style: italic;
 }
+
+#header-container.container {height: 72px;}
+#ipython_notebook img{
+	/* http://stackoverflow.com/a/24633671/454773 */
+	display:block;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	background: url(OU-logo-83x65.png) no-repeat;
+  	width: 83px; /* Width of new image */
+  	height: 65px; /* Height of new image */
+  	padding-left: 83px; /* Equal to width of new image */
+
+}
+
+.ou_comment_outer {
+    background-color: #eda7c3;
+}
+
+.ou_comment_prompt {
+    background-color: #f4cadb;
+}
+
+.ou_activity_outer {
+    background-color: #c8ecff;
+}
+
+
+.ou_activity_prompt {
+    background-color: #ecf6ff;
+}
+
     </style>
 
 
@@ -11784,29 +11819,42 @@ div#notebook {
 <body>
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
-    <div><img align="left" src='assets/ounewlogo.png' alt='OU logo' /></div>
+
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<br/>
-<p><strong>STATIC HTML EXPORT OF EXECUTED JUPYTER NOTEBOOK.</strong></p>
-<p><em>This is a static HTML web page export of an executed notebook that shows the sort of thing you might expect to see having executed the live notebooks. To access the live notebooks, refer to the course materials.</em></p>
-<hr/>
 <p><a name="cellTowers"></a></p>
-<h1 id="Activity-6.16---Cell-Tower-Lookup">Activity 6.16 - Cell Tower Lookup<a class="anchor-link" href="#Activity-6.16---Cell-Tower-Lookup">¶</a></h1><p>The Google geolocation API can be used to look-up the geographical locations (latitude and longitude co-ordinates) of cell towers and wifi hotspots based on their unique IDs.</p>
-<p>To call the Google webservice to look up the geographical locations of cell towers or wifi hotspots from their IDs, you will need to get a Google Geolocation API token: visit <a href="https://developers.google.com/maps/documentation/geocoding/get-api-key">https://developers.google.com/maps/documentation/geocoding/get-api-key</a> and follow the instructions on how to get a key for the geolocation API and how to enable it.</p>
-<p>When you have obtained your key, use it to set the <code>googleMapsAPIkey</code> variable below.</p>
+<h1 id="Activity-6.16---Cell-Tower-Lookup">Activity 6.16 - Cell Tower Lookup<a class="anchor-link" href="#Activity-6.16---Cell-Tower-Lookup">&#182;</a></h1><p>Online web applications such as <a href="https://www.opencellid.org/">OpenCelliD</a> allow users to enter uniquely identifying information for a cell tower and in return display the location of the corresponding cell tower on an interactive map.</p>
+<p>For example, use the above service to identify the location of the cell tower with details:</p>
+<ul>
+<li><code>MCC</code>: 234, <code>MNC</code>: 15, <code>LAC</code>: 714, <code>CellID</code>: 1671</li>
+</ul>
+<p>Services such as OpenCellID typically obtain the location data by calling a remote geolocation web service via an API. With access to such an API, we can create our own equivalent service.</p>
+<p>Geolocation APIs such as the Google geolocation API, or the <a href="https://radiocells.org/geolocation"><code>openbmap API</code></a>, which is compatible with the Google geolocation API, allow look-ups of the geographical location (latitude and longitude co-ordinates) of cell towers and wifi hotspots based on their unique IDs.</p>
+<p>In mid-2018, the Google geolocation API changed from a free service to a pay-as-you-go service requiring API key access. The <code>openbmap</code> API is compatible with the Google geolocation API — that is, it uses the same data format when making a request to the API and when receiving a data response from it — but it's availability cannot be guaranteed.</p>
+<p>In this activity you will see how to call the API services <em>in principle</em>, if not in fact.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Walk-through-of-How-to-Call-the-API">Walk-through of How to Call the API<a class="anchor-link" href="#Walk-through-of-How-to-Call-the-API">&#182;</a></h3><p>The following walk through demonstrates how to call the API. If you have a Google geolocation API key (you are not required to have one, and you are not expected to sign up for one), set the value of the <code>APIkey</code> variable below using it. If you want to try to use the <code>openbmap</code> API, set the APIkey value to an empty string (<code>APIkey=''</code>). To just work through the activity without calling either API, set <code>APIkey=None</code>.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [9]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">googleMapsAPIkey</span><span class="o">=</span><span class="s2">"KEY"</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># APIkey=&#39;YOUR GOOGLE LOCATION API ENABLED KEY&#39; #Insert your API key if you already have one &amp; want to use it</span>
+<span class="c1"># APIkey=&#39;&#39; #Set the key value to an empty string if you want to try to use the openbmap service</span>
+<span class="n">APIkey</span><span class="o">=</span><span class="kc">None</span> <span class="c1">#Set the value to None to skip trying to call either API</span>
 </pre></div>
 
 </div>
@@ -11818,12 +11866,12 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>To call the API, we need four pieces of data:</p>
+<p>To call the API, or look up a cell tower location using a third party web app with its own API access, we need four pieces of data:</p>
 
 <pre><code>- the network operator mobile country code (MCC): for example, the UK MCC code is 234
-- the mobile network code (MNC): for example, the Vodafone UK MCC is 15
-- the cell tower location area code: for example, 714
-- the cell tower cell ID: for example, 1671</code></pre>
+- the mobile network code (MNC): for example, the Vodafone UK MNC is 15
+- the cell tower location area code (LAC): for example, 714
+- the cell tower cell ID (CellID): for example, 1671</code></pre>
 
 </div>
 </div>
@@ -11832,26 +11880,26 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Once you have set your Google API key, run the following cell to look up the details of a particular cell tower:</p>
+<p>If you have set your Google API key, or want to try the <code>openbmap</code> service, run the following cell to look up the details of a particular cell tower. (Alternatively, use one of the third party web app services linked to above.)</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [10]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Add your cell tower details here.</span>
 <span class="c1">#You can find them using an app such as the OpenSignal app</span>
 
 <span class="n">postjson</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="s2">"cellTowers"</span><span class="p">:</span> <span class="p">[</span>
+  <span class="s2">&quot;cellTowers&quot;</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span>
-        <span class="s2">"mobileCountryCode"</span><span class="p">:</span> <span class="mi">234</span><span class="p">,</span>
-        <span class="s2">"mobileNetworkCode"</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
-        <span class="s2">"locationAreaCode"</span><span class="p">:</span> <span class="mi">979</span><span class="p">,</span>
-        <span class="s2">"cellId"</span><span class="p">:</span> <span class="mi">42333969</span>
+        <span class="s2">&quot;mobileCountryCode&quot;</span><span class="p">:</span> <span class="mi">234</span><span class="p">,</span> <span class="c1">#MCC</span>
+        <span class="s2">&quot;mobileNetworkCode&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="c1">#MNC</span>
+        <span class="s2">&quot;locationAreaCode&quot;</span><span class="p">:</span> <span class="mi">979</span><span class="p">,</span> <span class="c1">#LAC</span>
+        <span class="s2">&quot;cellId&quot;</span><span class="p">:</span> <span class="mi">42333969</span> <span class="c1">#CellId</span>
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
@@ -11867,14 +11915,13 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To call the service, we construct a URL as defined for a particular API and make a request to that URL using the <em>python</em> <code>requests</code> package.</p>
-<p>In this case, we will be making a request to the Google geolocation API.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [11]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#The requests library makes it easy to call URLs using Python</span>
@@ -11886,14 +11933,141 @@ div#notebook {
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To pass the data to the API, we need to create a Python <code>dict</code> that describes the data in a formally structured way:</p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [12]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span><span class="o">=</span><span class="s1">'https://www.googleapis.com/geolocation/v1/geolocate?key=</span><span class="si">{}</span><span class="s1">'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">googleMapsAPIkey</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">postjson</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;cellTowers&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;cellId&quot;</span><span class="p">:</span> <span class="mi">21532831</span><span class="p">,</span> <span class="s2">&quot;locationAreaCode&quot;</span><span class="p">:</span> <span class="mi">2862</span><span class="p">,</span> 
+                            <span class="s2">&quot;mobileCountryCode&quot;</span><span class="p">:</span> <span class="mi">214</span><span class="p">,</span> <span class="s2">&quot;mobileNetworkCode&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">}]}</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">'Data to be posted to API:'</span><span class="p">,</span> <span class="n">postjson</span><span class="p">)</span>
+<span class="n">postjson</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt output_prompt">Out[4]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;cellTowers&#39;: [{&#39;cellId&#39;: 21532831,
+   &#39;locationAreaCode&#39;: 2862,
+   &#39;mobileCountryCode&#39;: 214,
+   &#39;mobileNetworkCode&#39;: 7}]}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This parameter data is passed, as part of an HTTP/POST request, to the API endpoint URL, if one is specified:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Set the url to the appropriate API endpoint location</span>
+<span class="n">url</span><span class="o">=</span><span class="kc">None</span>
+
+<span class="k">if</span> <span class="n">APIkey</span><span class="p">:</span>
+    <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://www.googleapis.com/geolocation/v1/geolocate?key=</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">APIkey</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">APIkey</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://radiocells.org/backend/geolocate&quot;</span>
+    
+    
+<span class="k">if</span> <span class="n">url</span><span class="p">:</span>
+    <span class="c1">#Make the request</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">postjson</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">r</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+        <span class="c1"># display the response if something went wrong...</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Error: &#39;</span><span class="o">+</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>requests</code> package allows us parse any valid response as a JSON object and cast it to a Python dictionary:</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#If we get a valid response</span>
+<span class="k">if</span> <span class="n">APIkey</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+    <span class="c1">#Obtain the JSON response to a Python dict object</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>A typical response looks something like this:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="err">&#39;location&#39;:</span> <span class="err">{&#39;lat&#39;:</span> <span class="err">52.0370316,</span> <span class="err">&#39;lng&#39;:</span> <span class="err">-0.7098534999999999</span><span class="p">}</span><span class="err">,</span>
+ <span class="err">&#39;accuracy&#39;:</span> <span class="mf">1391.0</span><span class="err">}</span>
+</pre></div>
+<p>If the location of the devices with the specified MAC addresses are known, a location is determined and returned as a latitude / longitude pair and a specified accuracy.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">if</span> <span class="n">APIkey</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">r</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+    <span class="c1">#Here&#39;s one I prepared earlier</span>
+    <span class="n">jsondata</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;lat&#39;</span><span class="p">:</span><span class="mf">50.659079</span><span class="p">,</span> <span class="s1">&#39;lng&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">1.149397</span><span class="p">}}</span>
+
+<span class="n">lat</span> <span class="o">=</span> <span class="n">jsondata</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">jsondata</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">][</span><span class="s1">&#39;lng&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;JSON: </span><span class="si">{}</span><span class="se">\n</span><span class="s1">lat,lon = (</span><span class="si">{}</span><span class="s1">, </span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">jsondata</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">))</span>
 </pre></div>
 
 </div>
@@ -11910,49 +12084,10 @@ div#notebook {
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Data to be posted to API: {'cellTowers': [{'mobileCountryCode': 234, 'mobileNetworkCode': 15, 'locationAreaCode': 979, 'cellId': 42333969}]}
+<pre>JSON: {&#39;location&#39;: {&#39;lat&#39;: 50.659079, &#39;lng&#39;: -1.149397}}
+lat,lon = (50.659079, -1.149397)
 </pre>
 </div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [13]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">postjson</span><span class="p">)</span>
-
-<span class="c1">#Convert the JSON response to a Python dict object</span>
-<span class="n">jsondata</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-
-<span class="c1">#Display the returned data</span>
-<span class="n">jsondata</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[13]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{'location': {'lat': 52.0370316, 'lng': -0.7098534999999999},
- 'accuracy': 1391.0}</pre>
-</div>
-
 </div>
 
 </div>
@@ -11963,47 +12098,18 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>If the location of the devices with the specified MAC addresses are known, a location is determined and returned as a latitude / longitude pair and a specified accuracy.</p>
 <p>The latitude / longitude pair can the be used to identify the approximate location on a map.</p>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [14]:</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="n">jsondata</span><span class="p">[</span><span class="s1">'location'</span><span class="p">][</span><span class="s1">'lat'</span><span class="p">]</span>
-<span class="n">lon</span> <span class="o">=</span> <span class="n">jsondata</span><span class="p">[</span><span class="s1">'location'</span><span class="p">][</span><span class="s1">'lng'</span><span class="p">]</span>
-
-<span class="n">lat</span><span class="p">,</span> <span class="n">lon</span>
-</pre></div>
-
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="So-Where-is-That-Location-Exactly?">So Where is That Location Exactly?<a class="anchor-link" href="#So-Where-is-That-Location-Exactly?">&#182;</a></h2>
 </div>
 </div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt output_prompt">Out[14]:</div>
-
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(52.0370316, -0.7098534999999999)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
@@ -12018,32 +12124,13 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [15]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> folium_magic
 </pre></div>
 
 </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-<div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>The folium_magic extension is already loaded. To reload it, use:
-  %reload_ext folium_magic
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -12066,10 +12153,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [16]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">folium_map</span> -l $lat,$lon -z 14
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">folium_map</span> -m $lat,$lon -z 14
 </pre></div>
 
 </div>
@@ -12082,12 +12169,12 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[16]:</div>
+<div class="prompt output_prompt">Out[9]:</div>
 
 
 
 <div class="output_html rendered_html output_subarea output_execute_result">
-<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="data:text/html;charset=utf-8;base64,PCFET0NUWVBFIGh0bWw+CjxoZWFkPiAgICAKICAgIDxtZXRhIGh0dHAtZXF1aXY9ImNvbnRlbnQtdHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04IiAvPgogICAgPHNjcmlwdD5MX1BSRUZFUl9DQU5WQVMgPSBmYWxzZTsgTF9OT19UT1VDSCA9IGZhbHNlOyBMX0RJU0FCTEVfM0QgPSBmYWxzZTs8L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL2xlYWZsZXRAMS4yLjAvZGlzdC9sZWFmbGV0LmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2FqYXguZ29vZ2xlYXBpcy5jb20vYWpheC9saWJzL2pxdWVyeS8xLjExLjEvanF1ZXJ5Lm1pbi5qcyI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4yLjAvanMvYm9vdHN0cmFwLm1pbi5qcyI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvTGVhZmxldC5hd2Vzb21lLW1hcmtlcnMvMi4wLjIvbGVhZmxldC5hd2Vzb21lLW1hcmtlcnMuanMiPjwvc2NyaXB0PgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL2xlYWZsZXRAMS4yLjAvZGlzdC9sZWFmbGV0LmNzcyIgLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4yLjAvY3NzL2Jvb3RzdHJhcC5taW4uY3NzIiAvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLXRoZW1lLm1pbi5jc3MiIC8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vZm9udC1hd2Vzb21lLzQuNi4zL2Nzcy9mb250LWF3ZXNvbWUubWluLmNzcyIgLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvTGVhZmxldC5hd2Vzb21lLW1hcmtlcnMvMi4wLjIvbGVhZmxldC5hd2Vzb21lLW1hcmtlcnMuY3NzIiAvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL3Jhd2dpdC5jb20vcHl0aG9uLXZpc3VhbGl6YXRpb24vZm9saXVtL21hc3Rlci9mb2xpdW0vdGVtcGxhdGVzL2xlYWZsZXQuYXdlc29tZS5yb3RhdGUuY3NzIiAvPgogICAgPHN0eWxlPmh0bWwsIGJvZHkge3dpZHRoOiAxMDAlO2hlaWdodDogMTAwJTttYXJnaW46IDA7cGFkZGluZzogMDt9PC9zdHlsZT4KICAgIDxzdHlsZT4jbWFwIHtwb3NpdGlvbjphYnNvbHV0ZTt0b3A6MDtib3R0b206MDtyaWdodDowO2xlZnQ6MDt9PC9zdHlsZT4KICAgIAogICAgICAgICAgICA8c3R5bGU+ICNtYXBfNDQ3Y2NhNWE2NmM5NDkwNDhhYzA1OTdiYzI1YjkyMjUgewogICAgICAgICAgICAgICAgcG9zaXRpb24gOiByZWxhdGl2ZTsKICAgICAgICAgICAgICAgIHdpZHRoIDogMTAwLjAlOwogICAgICAgICAgICAgICAgaGVpZ2h0OiAxMDAuMCU7CiAgICAgICAgICAgICAgICBsZWZ0OiAwLjAlOwogICAgICAgICAgICAgICAgdG9wOiAwLjAlOwogICAgICAgICAgICAgICAgfQogICAgICAgICAgICA8L3N0eWxlPgogICAgICAgIAo8L2hlYWQ+Cjxib2R5PiAgICAKICAgIAogICAgICAgICAgICA8ZGl2IGNsYXNzPSJmb2xpdW0tbWFwIiBpZD0ibWFwXzQ0N2NjYTVhNjZjOTQ5MDQ4YWMwNTk3YmMyNWI5MjI1IiA+PC9kaXY+CiAgICAgICAgCjwvYm9keT4KPHNjcmlwdD4gICAgCiAgICAKCiAgICAgICAgICAgIAogICAgICAgICAgICAgICAgdmFyIGJvdW5kcyA9IG51bGw7CiAgICAgICAgICAgIAoKICAgICAgICAgICAgdmFyIG1hcF80NDdjY2E1YTY2Yzk0OTA0OGFjMDU5N2JjMjViOTIyNSA9IEwubWFwKAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgJ21hcF80NDdjY2E1YTY2Yzk0OTA0OGFjMDU5N2JjMjViOTIyNScsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB7Y2VudGVyOiBbNTIuMDM3MDMxNiwtMC43MDk4NTM0OTk5OTk5OTk5XSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHpvb206IDE0LAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbWF4Qm91bmRzOiBib3VuZHMsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsYXllcnM6IFtdLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgd29ybGRDb3B5SnVtcDogZmFsc2UsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBjcnM6IEwuQ1JTLkVQU0czODU3CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0pOwogICAgICAgICAgICAKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgdGlsZV9sYXllcl8zZGRiZDAwOTdmYWI0YjA4ODhmNmJmZWE2NTU3MWE2OSA9IEwudGlsZUxheWVyKAogICAgICAgICAgICAgICAgJ2h0dHBzOi8ve3N9LnRpbGUub3BlbnN0cmVldG1hcC5vcmcve3p9L3t4fS97eX0ucG5nJywKICAgICAgICAgICAgICAgIHsKICAiYXR0cmlidXRpb24iOiBudWxsLAogICJkZXRlY3RSZXRpbmEiOiBmYWxzZSwKICAibWF4Wm9vbSI6IDE4LAogICJtaW5ab29tIjogMSwKICAibm9XcmFwIjogZmFsc2UsCiAgInN1YmRvbWFpbnMiOiAiYWJjIgp9CiAgICAgICAgICAgICAgICApLmFkZFRvKG1hcF80NDdjY2E1YTY2Yzk0OTA0OGFjMDU5N2JjMjViOTIyNSk7CiAgICAgICAgCjwvc2NyaXB0Pg==" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div>
+<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="data:text/html;charset=utf-8;base64,PCFET0NUWVBFIGh0bWw+CjxoZWFkPiAgICAKICAgIDxtZXRhIGh0dHAtZXF1aXY9ImNvbnRlbnQtdHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04IiAvPgogICAgPHNjcmlwdD5MX1BSRUZFUl9DQU5WQVM9ZmFsc2U7IExfTk9fVE9VQ0g9ZmFsc2U7IExfRElTQUJMRV8zRD1mYWxzZTs8L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL2xlYWZsZXRAMS4zLjQvZGlzdC9sZWFmbGV0LmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2FqYXguZ29vZ2xlYXBpcy5jb20vYWpheC9saWJzL2pxdWVyeS8xLjExLjEvanF1ZXJ5Lm1pbi5qcyI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4yLjAvanMvYm9vdHN0cmFwLm1pbi5qcyI+PC9zY3JpcHQ+CiAgICA8c2NyaXB0IHNyYz0iaHR0cHM6Ly9jZG5qcy5jbG91ZGZsYXJlLmNvbS9hamF4L2xpYnMvTGVhZmxldC5hd2Vzb21lLW1hcmtlcnMvMi4wLjIvbGVhZmxldC5hd2Vzb21lLW1hcmtlcnMuanMiPjwvc2NyaXB0PgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvbnBtL2xlYWZsZXRAMS4zLjQvZGlzdC9sZWFmbGV0LmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLm1pbi5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4yLjAvY3NzL2Jvb3RzdHJhcC10aGVtZS5taW4uY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vZm9udC1hd2Vzb21lLzQuNi4zL2Nzcy9mb250LWF3ZXNvbWUubWluLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9MZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy8yLjAuMi9sZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9yYXdjZG4uZ2l0aGFjay5jb20vcHl0aG9uLXZpc3VhbGl6YXRpb24vZm9saXVtL21hc3Rlci9mb2xpdW0vdGVtcGxhdGVzL2xlYWZsZXQuYXdlc29tZS5yb3RhdGUuY3NzIi8+CiAgICA8c3R5bGU+aHRtbCwgYm9keSB7d2lkdGg6IDEwMCU7aGVpZ2h0OiAxMDAlO21hcmdpbjogMDtwYWRkaW5nOiAwO308L3N0eWxlPgogICAgPHN0eWxlPiNtYXAge3Bvc2l0aW9uOmFic29sdXRlO3RvcDowO2JvdHRvbTowO3JpZ2h0OjA7bGVmdDowO308L3N0eWxlPgogICAgCiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLAogICAgICAgIGluaXRpYWwtc2NhbGU9MS4wLCBtYXhpbXVtLXNjYWxlPTEuMCwgdXNlci1zY2FsYWJsZT1ubyIgLz4KICAgIDxzdHlsZT4jbWFwX2RjYjE3MTYxMDY3NDQyY2E5NzM1NzhjM2I5ODM0OGVlIHsKICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7CiAgICAgICAgd2lkdGg6IDEwMC4wJTsKICAgICAgICBoZWlnaHQ6IDEwMC4wJTsKICAgICAgICBsZWZ0OiAwLjAlOwogICAgICAgIHRvcDogMC4wJTsKICAgICAgICB9CiAgICA8L3N0eWxlPgo8L2hlYWQ+Cjxib2R5PiAgICAKICAgIAogICAgPGRpdiBjbGFzcz0iZm9saXVtLW1hcCIgaWQ9Im1hcF9kY2IxNzE2MTA2NzQ0MmNhOTczNTc4YzNiOTgzNDhlZSIgPjwvZGl2Pgo8L2JvZHk+CjxzY3JpcHQ+ICAgIAogICAgCiAgICAKICAgICAgICB2YXIgYm91bmRzID0gbnVsbDsKICAgIAoKICAgIHZhciBtYXBfZGNiMTcxNjEwNjc0NDJjYTk3MzU3OGMzYjk4MzQ4ZWUgPSBMLm1hcCgKICAgICAgICAnbWFwX2RjYjE3MTYxMDY3NDQyY2E5NzM1NzhjM2I5ODM0OGVlJywgewogICAgICAgIGNlbnRlcjogWzUwLjY1OTA3OSwgLTEuMTQ5Mzk3XSwKICAgICAgICB6b29tOiAxNCwKICAgICAgICBtYXhCb3VuZHM6IGJvdW5kcywKICAgICAgICBsYXllcnM6IFtdLAogICAgICAgIHdvcmxkQ29weUp1bXA6IGZhbHNlLAogICAgICAgIGNyczogTC5DUlMuRVBTRzM4NTcsCiAgICAgICAgem9vbUNvbnRyb2w6IHRydWUsCiAgICAgICAgfSk7CgogICAgCiAgICAKICAgIHZhciB0aWxlX2xheWVyXzMwMjNhMGZlYWEyNTQ3NzBhNzNlYmQ1NWFhYWM3ODU0ID0gTC50aWxlTGF5ZXIoCiAgICAgICAgJ2h0dHBzOi8ve3N9LnRpbGUub3BlbnN0cmVldG1hcC5vcmcve3p9L3t4fS97eX0ucG5nJywKICAgICAgICB7CiAgICAgICAgImF0dHJpYnV0aW9uIjogbnVsbCwKICAgICAgICAiZGV0ZWN0UmV0aW5hIjogZmFsc2UsCiAgICAgICAgIm1heE5hdGl2ZVpvb20iOiAxOCwKICAgICAgICAibWF4Wm9vbSI6IDE4LAogICAgICAgICJtaW5ab29tIjogMCwKICAgICAgICAibm9XcmFwIjogZmFsc2UsCiAgICAgICAgIm9wYWNpdHkiOiAxLAogICAgICAgICJzdWJkb21haW5zIjogImFiYyIsCiAgICAgICAgInRtcyI6IGZhbHNlCn0pLmFkZFRvKG1hcF9kY2IxNzE2MTA2NzQ0MmNhOTczNTc4YzNiOTgzNDhlZSk7CiAgICAKICAgICAgICB2YXIgbWFya2VyXzMxNTNlNjllOTg1NDRkMDZiZDQwZjBkMmNlMmNhNGYxID0gTC5tYXJrZXIoCiAgICAgICAgICAgIFs1MC42NTkwNzksIC0xLjE0OTM5N10sCiAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgIGljb246IG5ldyBMLkljb24uRGVmYXVsdCgpCiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICkuYWRkVG8obWFwX2RjYjE3MTYxMDY3NDQyY2E5NzM1NzhjM2I5ODM0OGVlKTsKICAgICAgICAKPC9zY3JpcHQ+" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div>
 </div>
 
 </div>
@@ -12100,7 +12187,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Try-it-Yourself">Try it Yourself<a class="anchor-link" href="#Try-it-Yourself">¶</a></h2><p>Modify the <code>postjson</code> definition above to use the same network settings but location area code 714 and cell tower ID    1671. Run the code cells again. Where is the cell tower located?</p>
+<h2 id="Try-it-Yourself">Try it Yourself<a class="anchor-link" href="#Try-it-Yourself">&#182;</a></h2><p>Modify the <code>postjson</code> definition above to use the same network settings but location area code 714 and cell tower ID    1671. Run the code cells again. Where is the cell tower located?</p>
 
 </div>
 </div>
