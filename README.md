@@ -1,6 +1,6 @@
 # OU TM112 Jupyter Notebook Activities
 
-Run live interactive notebook activities here: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ouseful-course-containers/ou-tm112-notebooks/master)
+Run live interactive notebook activities here: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ouseful-course-containers/ou-tm112-notebooks/ocl)
 
 See a non-executable, non-interactibe, static (read-only) HTML preview of the materials here: https://ouseful-course-containers.github.io/ou-tm112-notebooks/
 
