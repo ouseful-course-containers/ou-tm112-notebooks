@@ -1,6 +1,8 @@
 # OU TM112 Jupyter Notebook Activities
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ouseful-course-containers/ou-tm112-notebooks/master)
+Run live interactive notebook activities here: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ouseful-course-containers/ou-tm112-notebooks/master)
+
+See a non-executable, non-interactibe, static (read-only) HTML preview of the materials here: https://ouseful-course-containers.github.io/ou-tm112-notebooks/
 
 Notebooks and resources for the Open University Course [TM112 Introduction to computing and information technology 2](http://www.open.ac.uk/courses/modules/tm112) Block 2 Week 6 geolocation activities.
 
