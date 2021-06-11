@@ -1,0 +1,672 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sonification Demo &#8212; TM112 Location Based Computing Notebooks</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using Jupyter Notebooks" href="Using%20Jupyter%20Notebooks.html" />
+    <link rel="prev" title="Playing With dicts - Geolocation API Data" href="Block%203%2C%20Part%202%20-%20Box%202.3%20Looking%20back%20%E2%80%93%20Geocoding%20Demos.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">TM112 Location Based Computing Notebooks</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Location%20Based%20Computing.html">
+   Location Based Computing
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Block 2 Unit 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Activity%206.16%20-%20Cell%20Tower%20Lookup.html">
+   Activity 6.16 - Cell Tower Lookup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Activity%206.22%20-%206.25%20-%20Geocoding.html">
+   Activity 6.22 - 6.25 Geocoding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Activity%206.20%20-%20Locating%20Nearby%20Wifi%20Hotspots.html">
+   Activity 6.20 - Locating Nearby WiFi Hotspots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Activity%206.27%20-%20Creating%20annotated%20interactive%20maps%20with%20Python.html">
+   Activity 6.27 - Creating annotated interactive maps with Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Activity%206.29%20-%20Modelling%20uncertainty%20in%20simple%20trilateration.html">
+   Trilateration Demo
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Block 3 Unit 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Block%203%2C%20Part%202%20-%20Box%202.3%20Looking%20back%20%E2%80%93%20Geocoding%20Demos.html">
+   Playing With
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     dict
+    </span>
+   </code>
+   s - Geolocation API Data
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Bonus Features
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Sonification Demo
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Using%20Jupyter%20Notebooks.html">
+   Using Jupyter Notebooks
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Bonus notebook - Sonification Demo.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ouseful-course-containers/ou-tm112-notebooks/master?urlpath=tree/work/Bonus notebook - Sonification Demo.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-the-notebook">
+   Setting Up the Notebook
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#working-with-audio">
+   Working With Audio
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sonifying-data">
+   Sonifying Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#now-it-s-time-to-sonify">
+   Now It’s Time to Sonify
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generating-scatterplots-with-a-specified-correlation">
+   Generating Scatterplots With a Specified Correlation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#saving-the-audio-file">
+   Saving the Audio File
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="sonification-demo">
+<h1>Sonification Demo<a class="headerlink" href="#sonification-demo" title="Permalink to this headline">¶</a></h1>
+<p>This notebook demonstrates how to “sonify” a simple data set, converting the data to an audio form to help us try to perceive patterns within that data.</p>
+<p>The notebook makes use of the python <em>pandas</em> package to represent and <em>visualise</em> a dataset, as well as packages associated with the Jupyter notebook environment that support the audio playback as well as the embedding of interactive widgets that allow us to explore a dataset interactively.</p>
+<div class="section" id="setting-up-the-notebook">
+<h2>Setting Up the Notebook<a class="headerlink" href="#setting-up-the-notebook" title="Permalink to this headline">¶</a></h2>
+<p>Run the following code cells to set up the notebook environment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#IPython package for embedding an audio player in a notebook</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Audio</span>
+
+<span class="c1">#The ipwidgets.interact package supports interactive widget creation</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interact</span>
+
+<span class="c1">#Configure the notebook to display charts inline</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="c1">#Import a routine to plot simple datasets</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">plot</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Import the pandas package for working with tabular datasets</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1">#Various packages that provide access to maths functions</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">math</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="working-with-audio">
+<h2>Working With Audio<a class="headerlink" href="#working-with-audio" title="Permalink to this headline">¶</a></h2>
+<p>The following examples are based on a <a class="reference external" href="https://jupyter.brynmawr.edu/services/public/dblank/jupyter.cs/Sonification.ipynb">sonification notebook</a> published by Doug Blank at Bryn Mawr College.</p>
+<p>Let’s start with a simple demonstration of how to create and play a simple tone (a sine wave). You do not need to understand how the code works in order to run the code cell.</p>
+<p>If you want the audio player to play the tone automatically when the code cell is run, change the setting from <code class="docutils literal notranslate"><span class="pre">autoplay=False</span></code> to <code class="docutils literal notranslate"><span class="pre">autoplay=True</span></code>.</p>
+<p><strong>Run the code cells below now.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">duration</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># duration of the tone in seconds</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="mi">44100</span> <span class="c1"># sampling rate of the tone</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#https://jupyter.brynmawr.edu/services/public/dblank/jupyter.cs/Sonification.ipynb</span>
+<span class="c1">#This rather complicated looking function creates a function</span>
+<span class="c1">#It allows us to retrieve the value of a sine wave of a particular frequency at a particular time.</span>
+<span class="c1">#The frequency is the frequency of the tone in hertz (hz)</span>
+<span class="k">def</span> <span class="nf">make_tone</span><span class="p">(</span><span class="n">frequency</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">frequency</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">f</span>
+
+<span class="n">tone440</span> <span class="o">=</span> <span class="n">make_tone</span><span class="p">(</span><span class="mi">440</span><span class="p">)</span> 
+
+<span class="c1">#Visualise the tone over a short period (0.1s)</span>
+<span class="n">plot</span><span class="p">([</span><span class="n">tone440</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">.01</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">rate</span><span class="p">)]);</span>
+
+<span class="c1">#Generate the tone and play it through a notebook embedded audio player</span>
+<span class="n">Audio</span><span class="p">([</span><span class="n">tone440</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">rate</span><span class="p">)],</span> <span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">,</span> <span class="n">autoplay</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sonifying-data">
+<h2>Sonifying Data<a class="headerlink" href="#sonifying-data" title="Permalink to this headline">¶</a></h2>
+<p>As well as playing simple tones, we can also generate audio signals of varying frequencies based on data values contained within a dataset.</p>
+<p>We will create a couple of helper functions to generate an “audio” dataset from a</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to find the value of a sine wave of a given frequency at a particular time</span>
+<span class="k">def</span> <span class="nf">make_tone2</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">frequency</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">frequency</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Grab a list of frequency values from a dataset for playback over a given period at a given sampling rate</span>
+<span class="k">def</span> <span class="nf">makeAudio</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="n">minf</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">maxf</span><span class="o">=</span><span class="mi">5000</span><span class="p">):</span>
+    <span class="n">audiodata</span><span class="o">=</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">rate</span><span class="p">):</span>
+        <span class="n">data_index</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">t</span><span class="o">/</span><span class="n">duration</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+        <span class="n">ratio</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data_index</span><span class="p">]</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>            
+        <span class="n">audiodata</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">make_tone2</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ratio</span> <span class="o">*</span> <span class="p">(</span><span class="n">maxf</span> <span class="o">-</span> <span class="n">minf</span><span class="p">)</span> <span class="o">+</span> <span class="n">minf</span><span class="p">))</span> 
+    <span class="k">return</span> <span class="n">audiodata</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">makeAudio()</span></code> function may take some time to run, so it makes sense to provide a means for saving and loading the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">saveAudioData</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">outfile</span> <span class="o">=</span> <span class="s2">&quot;audiodata.txt&quot;</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Function to save the audiodata list&#39;&#39;&#39;</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">outfile</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">loadAudioData</span><span class="p">(</span><span class="n">infile</span> <span class="o">=</span> <span class="s2">&quot;audiodata.txt&quot;</span><span class="p">):</span>
+    <span class="n">readback</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">infile</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">readback</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">readback</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="now-it-s-time-to-sonify">
+<h2>Now It’s Time to Sonify<a class="headerlink" href="#now-it-s-time-to-sonify" title="Permalink to this headline">¶</a></h2>
+<p>Generate a sample dataset with several columns, each representing a set frequencies over time:</p>
+<ul class="simple">
+<li><p>a set of values that increase proportionally (linearly) over time;</p></li>
+<li><p>a set of values that decrease proportionally (linearly) over time;</p></li>
+<li><p>a set of values that increase proportionally (linearly) over time with the addition of random noise.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Generate the dataset and preview it as a chart</span>
+<span class="n">numpoints</span> <span class="o">=</span> <span class="mi">50</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">numpoints</span><span class="p">)})</span>
+
+<span class="c1">#Generate a column with values proportional to time</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span>  <span class="n">df</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">numpoints</span>
+
+<span class="c1">#Generate a column with values inversely proportional to time</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;y2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span>
+
+<span class="c1">#Generate a column with values proportional to time with the addition of random noise</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;y3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="o">+</span><span class="p">((</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">/</span><span class="mi">5</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y3&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Sample number&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minf</span><span class="o">=</span><span class="mi">200</span> <span class="c1">#Minimum frequency</span>
+<span class="n">maxf</span><span class="o">=</span><span class="mi">4000</span> <span class="c1">#Maximum frequency</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Change the <code class="docutils literal notranslate"><span class="pre">col</span> <span class="pre">=</span> </code> setting to one of the other columns (<code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">y2</span></code>, <code class="docutils literal notranslate"><span class="pre">y3</span></code>) to choose which set of data valus to visualise and sonify.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Select a column to visualise and sonify</span>
+<span class="n">col</span> <span class="o">=</span> <span class="s1">&#39;y&#39;</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">col</span><span class="p">);</span>
+<span class="n">Audio</span><span class="p">(</span><span class="n">makeAudio</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">duration</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="n">minf</span><span class="p">,</span> <span class="n">maxf</span><span class="p">),</span> <span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">,</span> <span class="n">autoplay</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>## Visualising a more random scatterplot</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Example of reordering a list of numbers in a random order</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+<span class="n">nums</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;x&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">samples</span><span class="p">)})</span>
+<span class="n">nums</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">samples</span><span class="p">))</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nums</span>
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span><span class="n">x</span><span class="o">=</span> <span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">);</span>
+<span class="n">Audio</span><span class="p">(</span><span class="n">makeAudio</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="n">duration</span><span class="p">,</span> <span class="n">rate</span><span class="p">),</span> <span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">,</span> <span class="n">autoplay</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="generating-scatterplots-with-a-specified-correlation">
+<h2>Generating Scatterplots With a Specified Correlation<a class="headerlink" href="#generating-scatterplots-with-a-specified-correlation" title="Permalink to this headline">¶</a></h2>
+<p>We can create a function that will generate scatterplots with a specified correlation.</p>
+<p>We can then create an interactive scatterplot explorer that allows us to both visualise and sonify scatterplots with different correlations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#ish via https://stackoverflow.com/a/18684433/454773</span>
+
+<span class="c1">#If the correlation is set to 1 we sometimes get a warning that we can ignore...</span>
+<span class="n">np</span><span class="o">.</span><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="sa">r</span><span class="s1">&#39;covariance&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">generateCorrelatedData</span><span class="p">(</span><span class="n">correlation</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39; Function to create a two dimensional dataset with a specified correlation between values &#39;&#39;&#39;</span>
+    
+    <span class="n">xmin</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">xmax</span><span class="o">=</span><span class="mi">100</span>
+
+    <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span>
+    <span class="n">ymax</span><span class="o">=</span><span class="mi">1</span>
+
+    <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">])</span>
+    <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">])</span>
+    <span class="n">means</span> <span class="o">=</span> <span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">yy</span><span class="o">.</span><span class="n">mean</span><span class="p">()]</span>
+
+    <span class="c1">#Set up the standard deviations so the half-interval corresponds to 3 standard deviations</span>
+    <span class="c1">#This means ~99% of the generated points will be inside the interval</span>
+    <span class="n">stds</span> <span class="o">=</span> <span class="p">[</span><span class="n">xx</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">/</span> <span class="mi">3</span><span class="p">,</span> <span class="n">yy</span><span class="o">.</span><span class="n">std</span><span class="p">()</span> <span class="o">/</span> <span class="mi">3</span><span class="p">]</span>
+
+    <span class="c1">#Create the correlated data</span>
+    <span class="n">covariances</span> <span class="o">=</span> <span class="p">[[</span><span class="n">stds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">stds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">stds</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">correlation</span><span class="p">],</span> <span class="p">[</span><span class="n">stds</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">stds</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">correlation</span><span class="p">,</span> <span class="n">stds</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">]]</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">means</span><span class="p">,</span> <span class="n">covariances</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+    
+    <span class="c1">#Represent the data as a dataframe</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="s1">&#39;y&#39;</span><span class="p">])</span>
+    
+    <span class="c1">#Sort the dataframe by increasing x</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now use that function as part of an interactive scatterplot explorer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nd">@interact</span><span class="p">(</span><span class="n">correlation</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.05</span><span class="p">))</span>
+<span class="k">def</span> <span class="nf">correlatedScatter</span><span class="p">(</span><span class="n">correlation</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">generateCorrelatedData</span><span class="p">(</span><span class="n">correlation</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Correlation: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">correlation</span><span class="p">));</span>
+    
+    <span class="n">display</span><span class="p">(</span><span class="n">Audio</span><span class="p">(</span><span class="n">makeAudio</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="n">duration</span><span class="p">,</span> <span class="n">rate</span><span class="p">),</span> <span class="n">rate</span><span class="o">=</span><span class="n">rate</span><span class="p">,</span> <span class="n">autoplay</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="saving-the-audio-file">
+<h2>Saving the Audio File<a class="headerlink" href="#saving-the-audio-file" title="Permalink to this headline">¶</a></h2>
+<p>As well as playing hthe audio file, we can also save it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">=</span><span class="n">makeAudio</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">],</span> <span class="n">duration</span><span class="p">,</span> <span class="n">rate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Wav file generator based on the Jupyter notebook Audio._make_wav() component</span>
+
+<span class="kn">import</span> <span class="nn">struct</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
+<span class="kn">import</span> <span class="nn">wave</span>
+
+<span class="k">def</span> <span class="nf">saveWav</span><span class="p">(</span><span class="n">audio_data</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;sonified.wav&#39;</span><span class="p">,</span> <span class="n">returner</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">nchan</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">fp</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+
+    <span class="n">maxvalue</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">audio_data</span><span class="p">))</span>
+    <span class="n">scaled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int16</span><span class="p">(</span><span class="n">audio_data</span><span class="o">/</span><span class="n">maxvalue</span> <span class="o">*</span> <span class="mi">32767</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+    <span class="n">waveobj</span> <span class="o">=</span> <span class="n">wave</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+    <span class="n">waveobj</span><span class="o">.</span><span class="n">setnchannels</span><span class="p">(</span><span class="n">nchan</span><span class="p">)</span>
+    <span class="n">waveobj</span><span class="o">.</span><span class="n">setframerate</span><span class="p">(</span><span class="n">rate</span><span class="p">)</span>
+    <span class="n">waveobj</span><span class="o">.</span><span class="n">setsampwidth</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">waveobj</span><span class="o">.</span><span class="n">setcomptype</span><span class="p">(</span><span class="s1">&#39;NONE&#39;</span><span class="p">,</span><span class="s1">&#39;NONE&#39;</span><span class="p">)</span>
+    <span class="n">waveobj</span><span class="o">.</span><span class="n">writeframes</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">&#39;&lt;h&#39;</span><span class="p">,</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">scaled</span><span class="p">]))</span>
+    
+    <span class="n">val</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+    
+    <span class="n">waveobj</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span><span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="n">returner</span><span class="p">:</span> <span class="k">return</span> <span class="n">val</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>This notebook has demonstrated how simple datasets can be “visualised” in an audible way using a technique referred to as a <em>sonification</em>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ouseful-course-containers/ou-tm112-notebooks",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python36",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python36'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Block%203%2C%20Part%202%20-%20Box%202.3%20Looking%20back%20%E2%80%93%20Geocoding%20Demos.html" title="previous page">Playing With <code class="docutils literal notranslate"><span class="pre">dict</span></code>s - Geolocation API Data</a>
+    <a class='right-next' id="next-link" href="Using%20Jupyter%20Notebooks.html" title="next page">Using Jupyter Notebooks</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Tony Hirst, on behalf of the OU TM112 Module Team<br/>
+        
+            &copy; Copyright The Open University, 2018-2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

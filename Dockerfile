@@ -2,9 +2,8 @@ FROM jupyter/base-notebook
 
 RUN pip install folium
 
-RUN pip install ipywidgets
+RUN pip install ipywidgets install jupyter-offlinenotebook
 RUN jupyter nbextension enable --py widgetsnbextension  --sys-prefix
-
 RUN pip install descartes scipy shapely pandas
 
 

@@ -1,0 +1,25 @@
+title: TM112 Location Based Computing Notebooks
+author: Tony Hirst, on behalf of the OU TM112 Module Team
+copyright: "The Open University, 2018-2021" 
+logo: jupyter_custom_files/custom/OU-logo-83x65.png
+only_build_toc_files: true
+exclude_patterns: [.md, ^ipynb]
+execute:
+  execute_notebooks: off
+  timeout: 60  
+parse:
+  myst_dmath_double_inline: true
+launch_buttons:
+  notebook_interface        : classic  # The interface interactive links will activate ["classic", "jupyterlab"]
+  binderhub_url             : https://mybinder.org  # The URL of the BinderHub (e.g., https://mybinder.org)
+  jupyterhub_url            : ""  # The URL of the JupyterHub (e.g., https://datahub.berkeley.edu)
+  thebe                     : true  # Add a thebe button to pages (requires the repository to run on Binder)
+  colab_url                 : "" # The URL of Google Colab (https://colab.research.google.com)
+
+repository:
+  url                       : https://github.com/ouseful-course-containers/ou-tm112-notebooks/  # The URL to your book's repository
+  path_to_book              : work/  # A path to your book's folder, relative to the repository root.
+  branch                    : master 
+
+html:
+  extra_footer: ""

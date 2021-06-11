@@ -1,0 +1,500 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Activity 6.27 - Creating annotated interactive maps with Python &#8212; TM112 Location Based Computing Notebooks</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Trilateration Demo" href="Activity%206.29%20-%20Modelling%20uncertainty%20in%20simple%20trilateration.html" />
+    <link rel="prev" title="Activity 6.20 - Locating Nearby WiFi Hotspots" href="Activity%206.20%20-%20Locating%20Nearby%20Wifi%20Hotspots.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">TM112 Location Based Computing Notebooks</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Location%20Based%20Computing.html">
+   Location Based Computing
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Block 2 Unit 2
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Activity%206.16%20-%20Cell%20Tower%20Lookup.html">
+   Activity 6.16 - Cell Tower Lookup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Activity%206.22%20-%206.25%20-%20Geocoding.html">
+   Activity 6.22 - 6.25 Geocoding
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Activity%206.20%20-%20Locating%20Nearby%20Wifi%20Hotspots.html">
+   Activity 6.20 - Locating Nearby WiFi Hotspots
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Activity 6.27 - Creating annotated interactive maps with Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Activity%206.29%20-%20Modelling%20uncertainty%20in%20simple%20trilateration.html">
+   Trilateration Demo
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Block 3 Unit 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Block%203%2C%20Part%202%20-%20Box%202.3%20Looking%20back%20%E2%80%93%20Geocoding%20Demos.html">
+   Playing With
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     dict
+    </span>
+   </code>
+   s - Geolocation API Data
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Bonus Features
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Bonus%20notebook%20-%20Sonification%20Demo.html">
+   Sonification Demo
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Using%20Jupyter%20Notebooks.html">
+   Using Jupyter Notebooks
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Activity 6.27 - Creating annotated interactive maps with Python.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ouseful-course-containers/ou-tm112-notebooks/master?urlpath=tree/work/Activity 6.27 - Creating annotated interactive maps with Python.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-map-of-the-ou-campus">
+   Creating a Map of the OU Campus
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamically-add-markers-to-the-map">
+     Dynamically Add Markers to the Map
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#programmatically-add-markers-to-the-folium-map-object">
+     Programmatically Add Markers to the Folium Map Object
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#popping-up-the-latitude-and-longitude-of-a-location">
+   Popping Up the Latitude and Longitude of a Location
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise">
+   Exercise
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sharing-your-map">
+     Sharing Your Map
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="activity-6-27-creating-annotated-interactive-maps-with-python">
+<h1>Activity 6.27 - Creating annotated interactive maps with Python<a class="headerlink" href="#activity-6-27-creating-annotated-interactive-maps-with-python" title="Permalink to this headline">¶</a></h1>
+<p>This notebook demonstrates how to create a simple, interactive, embedded map using the Python <code class="docutils literal notranslate"><span class="pre">folium</span></code> package. You will also have an opportunity to create and save your own interactive map.</p>
+<p>The package uses predefined templates to generate HTML and Javascript code to render the map using the Javascript <code class="docutils literal notranslate"><span class="pre">leaflet</span></code> library. The <code class="docutils literal notranslate"><span class="pre">ipython_folium_magic</span></code> magic is built on top of <code class="docutils literal notranslate"><span class="pre">folium</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Run this cell first to import the folium package to access the maps</span>
+<span class="kn">import</span> <span class="nn">folium</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="creating-a-map-of-the-ou-campus">
+<h2>Creating a Map of the OU Campus<a class="headerlink" href="#creating-a-map-of-the-ou-campus" title="Permalink to this headline">¶</a></h2>
+<p>We can create a <code class="docutils literal notranslate"><span class="pre">folium</span></code> map object by calling the <code class="docutils literal notranslate"><span class="pre">folium.Map()</span></code> function.</p>
+<p>The map is centred on a particular location specified by using its latitude and longitude, using an optionally declared zoom level.</p>
+<p>Any output from the command on the last line of a cell will be displayed as the cells output.</p>
+<p>Stating just a variable name returns the value of the object - in this case, an HTML page that implements our interactive map.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Run this cell to create the map object</span>
+<span class="n">mymap</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mf">52.0236</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7088</span><span class="p">],</span> <span class="n">zoom_start</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1">#Display the map</span>
+<span class="n">mymap</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="dynamically-add-markers-to-the-map">
+<h3>Dynamically Add Markers to the Map<a class="headerlink" href="#dynamically-add-markers-to-the-map" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">folium.ClickForMarker()</span></code> function adds an interactive function to a map that allows you to click on the map at a particular location and add a marker to it.</p>
+<p>Add the <code class="docutils literal notranslate"><span class="pre">folium.ClickForMarker()</span></code> function to the map and then add one or more markers to the map.  Click on a marker to display a popup containing the latitude and longitude of the location the marker is placed at.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Add the ClickForMarker() functionality to the map</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">ClickForMarker</span><span class="p">()</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">mymap</span><span class="p">)</span>
+
+<span class="c1">#Display the map</span>
+<span class="n">mymap</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can save a copy of the HTML file that implements the map using the <code class="docutils literal notranslate"><span class="pre">folium</span></code> map object’s <code class="docutils literal notranslate"><span class="pre">.save('MY_MAP_FILENAME.html')</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mymap</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;OUcampusMap.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Look at the directory this notebook is in - you should see the newly created <code class="docutils literal notranslate"><span class="pre">OUcampusMap.html</span></code> file there.</p>
+<p>You can also view the file in your browser: <span class="xref myst">OUcampusMap.html</span>.</p>
+<p>One thing you may notice is that the markers you added to the map do not appear in the <em>saved</em> version of the map. This is because they are added to the interactive <code class="docutils literal notranslate"><span class="pre">Leaflet</span> <span class="pre">(Javascript)</span></code> map object, <em>not</em> your <code class="docutils literal notranslate"><span class="pre">folium</span></code> map object.</p>
+<p>So how can we add more permanent markers to the map?</p>
+</div>
+<div class="section" id="programmatically-add-markers-to-the-folium-map-object">
+<h3>Programmatically Add Markers to the Folium Map Object<a class="headerlink" href="#programmatically-add-markers-to-the-folium-map-object" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">folium.Marker()</span></code> method creates a marker object with a particular location and popup label that can then be added to your <code class="docutils literal notranslate"><span class="pre">folium</span></code> map object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Run this cell to add the markers to the map object...</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">([</span><span class="mf">52.0239</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7072</span><span class="p">],</span> <span class="n">popup</span><span class="o">=</span><span class="s1">&#39;OU Library&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">mymap</span><span class="p">)</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">([</span><span class="mf">52.0242</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7112</span><span class="p">],</span> <span class="n">popup</span><span class="o">=</span><span class="s1">&#39;Jennie Lee Building&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">mymap</span><span class="p">)</span>
+
+<span class="c1">#Save the map</span>
+<span class="n">mymap</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;OUcampusMap-annotated.html&#39;</span><span class="p">)</span>
+
+<span class="c1">#...and display the map in the notebook</span>
+<span class="n">mymap</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>What happens if you view the HTML file in your browser now? The markers should be there: <span class="xref myst">OUcampusMap-annotated.html</span></p>
+</div>
+</div>
+<div class="section" id="popping-up-the-latitude-and-longitude-of-a-location">
+<h2>Popping Up the Latitude and Longitude of a Location<a class="headerlink" href="#popping-up-the-latitude-and-longitude-of-a-location" title="Permalink to this headline">¶</a></h2>
+<p>As well as the <code class="docutils literal notranslate"><span class="pre">folium</span></code> <code class="docutils literal notranslate"><span class="pre">ClickForMarker()</span></code> tool, there is another function we can add to the map - <code class="docutils literal notranslate"><span class="pre">LatLngPopup()</span></code>.</p>
+<p>Rather than placing a marker, this simply displays a popup revealing the latitude and longitude of the location clicked on.</p>
+<p>Zoom in to a particular location on the map using the map’s +/- options, dragging the map with your mouse cursor to recentre it and find the co-ordinates of two or three locations on it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create a new map...</span>
+<span class="n">myNewMap</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">()</span>
+
+<span class="c1">#...within which you can interactively display the latitude and longitude of clicked on locations</span>
+<span class="n">folium</span><span class="o">.</span><span class="n">LatLngPopup</span><span class="p">()</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">myNewMap</span><span class="p">)</span>
+
+<span class="c1">#Display the map</span>
+<span class="n">myNewMap</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p>Using the recipe for creating a map and placing markers on it described above, create a map centred on your home location and two or three appropriately labelled markers identifying nearby points of interest.</p>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">LatLngPopup()</span></code> tool to find any latitude and longitude co-ordinates you need.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Create a map object, centred on your home, and at an appropriate zoom level</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Programmatically add two or three markers, with appropriate labels, locating nearby points of interest</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Render the map in the notebook</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Save the map - eg as myHomeMap.html</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>View the HTML version of your map directly in a new browser tab.</p>
+<p>If you have the <code class="docutils literal notranslate"><span class="pre">LatLngPopup()</span></code> tool attached to your saved map, you may want to comment out where you added it and then recreate and save a version of the map without this click behavior added to it.</p>
+<div class="section" id="sharing-your-map">
+<h3>Sharing Your Map<a class="headerlink" href="#sharing-your-map" title="Permalink to this headline">¶</a></h3>
+<p>If you want to share your map, open the HTML file in a text editor, copy the HTML, and paste it into a gist at <code class="docutils literal notranslate"><span class="pre">https://gist.github.com</span></code> with the filename <code class="docutils literal notranslate"><span class="pre">index.html</span></code>. Save the gist as a <em>public</em> gist and in the URL replace the <code class="docutils literal notranslate"><span class="pre">gist.github.com</span></code> domain with <code class="docutils literal notranslate"><span class="pre">bl.ocks.org</span></code>. You should now be able to see your map published on the web.</p>
+</div>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>In this notebook, you have learned how to create a simple interactive map using the Python <code class="docutils literal notranslate"><span class="pre">folium</span></code> library and place markers on it.</p>
+<p>You also learned how to fashion your own “location co-ordinates lookup” tool using the <code class="docutils literal notranslate"><span class="pre">folium</span> <span class="pre">LatLngPopup()</span></code> method.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ouseful-course-containers/ou-tm112-notebooks",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Activity%206.20%20-%20Locating%20Nearby%20Wifi%20Hotspots.html" title="previous page">Activity 6.20 - Locating Nearby WiFi Hotspots</a>
+    <a class='right-next' id="next-link" href="Activity%206.29%20-%20Modelling%20uncertainty%20in%20simple%20trilateration.html" title="next page">Trilateration Demo</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Tony Hirst, on behalf of the OU TM112 Module Team<br/>
+        
+            &copy; Copyright The Open University, 2018-2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

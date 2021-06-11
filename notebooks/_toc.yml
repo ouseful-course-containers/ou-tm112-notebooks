@@ -1,0 +1,19 @@
+format: jb-book
+root: Location Based Computing
+parts:
+- caption: Block 2 Unit 2
+  chapters:
+  - file: Activity 6.16 - Cell Tower Lookup
+  - file: Activity 6.22 - 6.25 - Geocoding
+  - file: Activity 6.20 - Locating Nearby Wifi Hotspots
+  - file: Activity 6.27 - Creating annotated interactive maps with Python
+  - file: Activity 6.29 - Modelling uncertainty in simple trilateration
+- caption: Block 3 Unit 2
+  chapters:
+  - file: Block 3, Part 2 - Box 2.3 Looking back – Geocoding Demos
+- caption: Bonus Features
+  chapters:
+  - file: Bonus notebook - Sonification Demo
+- caption: Appendices
+  chapters:
+  - file: Using Jupyter Notebooks

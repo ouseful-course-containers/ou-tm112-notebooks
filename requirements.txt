@@ -2,3 +2,6 @@ folium
 git+https://github.com/ouseful-backup/Localization.git
 git+https://github.com/psychemedia/ipython_magic_folium.git
 
+
+nbgitpuller
+jupyter-offlinenotebook
