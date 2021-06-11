@@ -1,9 +1,9 @@
 title: TM112 Location Based Computing Notebooks
 author: Tony Hirst, on behalf of the OU TM112 Module Team
 copyright: "The Open University, 2018-2021" 
-logo: jupyter_custom_files/custom/OU-logo-83x65.png
+logo: images/OU-logo-83x65.png
 only_build_toc_files: true
-exclude_patterns: [.md, ^ipynb]
+exclude_patterns: [.md, ^ipynb, .ipynb/*]
 execute:
   execute_notebooks: off
   timeout: 60  
