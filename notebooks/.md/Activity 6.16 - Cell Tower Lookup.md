@@ -1,11 +1,12 @@
 ---
 jupyter:
   jupytext:
+    formats: ipynb,.md//md
     text_representation:
       extension: .md
       format_name: markdown
-      format_version: '1.1'
-      jupytext_version: 1.2.1
+      format_version: '1.3'
+      jupytext_version: 1.11.4
   kernelspec:
     display_name: Python 3
     language: python
@@ -114,7 +115,6 @@ if APIkey is not None and r.ok:
     r.json()
 ```
 
-<!-- #region -->
 A typical response looks something like this:
 
 ```json
@@ -123,7 +123,6 @@ A typical response looks something like this:
  ```
 
 If the location of the devices with the specified MAC addresses are known, a location is determined and returned as a latitude / longitude pair and a specified accuracy.
-<!-- #endregion -->
 
 ```python
 if APIkey is None or not r.ok:
