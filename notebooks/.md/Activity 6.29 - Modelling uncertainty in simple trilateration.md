@@ -13,17 +13,17 @@ jupyter:
     name: python3
 ---
 
-# Trilateration Demo
+# Modelling uncertainty in simple trilateration
 
 This notebook provides a simple interactive example of how the location and signal strength of three base stations can affect the amount of uncertainty associated with locating a receiver based on its relative distance from each of them.
 
 
-## Trilateration Demo
+## Trilateration demo
 
 
 When you run the following cell you will be presented with several interactive sliders that let you set the *x, y* coordinates that define the location of three separate base stations.
 
-The *r* value sets the distance over which the cell tower can be detected, modeled as the radius of a circle drawn around the corresponding cell tower.
+The *r* value sets the distance over which the cell tower can be detected, modelled as the radius of a circle drawn around the corresponding cell tower.
 
 The location of a target receiver is identified as a red dot. The dark blue area represents the uncertainty in locating the receiver based on its ability to see two or more of the cell towers.
 
