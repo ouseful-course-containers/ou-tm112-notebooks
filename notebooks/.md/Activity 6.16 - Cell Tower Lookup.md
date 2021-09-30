@@ -24,7 +24,7 @@ For example, use the above service to identify the location of the cell tower wi
 - `MCC`: 234, `MNC`: 15, `LAC`: 714, `CellID`: 1671
 
 
-Services such as OpenCelliD typically obtain the location data by calling a remote geolocation web service via an API. With access to such an API, we can create our own equivalent service.
+Services such as OpenCelliD typically obtain the location data by calling a remote geolocation web service via an API (application programming interface). With access to such an API, we can create our own equivalent service.
 
 Geolocation APIs such as the Google geolocation API, or the [`openbmap API`](https://radiocells.org/geolocation), which is compatible with the Google geolocation API, allow look-ups of the geographical location (latitude and longitude coordinates) of cell towers and Wi-Fi hotspots based on their unique IDs.
 
