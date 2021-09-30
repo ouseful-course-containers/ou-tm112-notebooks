@@ -13,16 +13,16 @@ jupyter:
     name: python3
 ---
 
-# Playing With `dict`s - Geolocation API Data
+# Playing with `dict`s – geolocation API data
 
 In this notebook, you will have a chance to explore how Python `dict`s can be used to represent hierarchically structured data.
 
 
-Python `dict`s are *associative arrays* that use *key: value* pairs. Data *value*s are associated with a unique *key*s and retrieved by referencing the key you are interested in.
+Python `dict`s are *associative arrays* that use *key: value* pairs. Data *value*s are associated with unique *key*s and retrieved by referencing the key you are interested in.
 
 In a Python `dict`, the value associated with a particular key may itself be a `dict` structure, which gives us the notion of `nested dicts`.
 
-Although the data provided by the *postcodes.io* service is returned as a JSON data structure, it can be re-representd (*sic*) as a nested Python `dict`, as modeled below.
+Although the data provided by the `postcodes.io` service is returned as a JSON data structure, it can be re-representd (*sic*) as a nested Python `dict`, as modelled below.
 
 ```python
 postcode_dict = {'result': {'admin_county': None,
@@ -107,7 +107,7 @@ Which parish is the postcode associated with...?
 
 ```
 
-### Referencing Deep into a Nested `dict`
+### Referencing deep into a nested `dict`
 
 To reference items in one `dict` nested inside another, we can "chain" together the keys for the nested `dict`s, one inside the other, defining a path that essentially walks through each `dict` in turn:
 
@@ -131,8 +131,8 @@ What *code* does this CCG have? (Again, your answer should reference directly in
 
 ```
 
-## Unique Keys In Nested `dict`s
-In the sense that a `nested dict` is itself a `dict`, the unique key to a deeply nested element is then the complete path to the element. For example, when finding the Parliamentary Constituency in the result returned from the *postcodes.io* data, the unique key on the `postcode_dict` `dict` would be `[ 'result' ][ 'parliamentary_constituency' ]`.
+## Unique keys in nested `dict`s
+In the sense that a `nested dict` is itself a `dict`, the unique key to a deeply nested element is then the complete path to the element. For example, when finding the Parliamentary Constituency in the result returned from the `postcodes.io` data, the unique key on the `postcode_dict` `dict` would be `[ 'result' ][ 'parliamentary_constituency' ]`.
 
 Sometimes, you might notice that the same key may appear multiple times in a nested Python `dict`. This does not break the requirement that keys are unique, because the keys are each keys in a *different* parent `dict`.
 
@@ -181,7 +181,7 @@ print(postcode_dict2['results'][0]['geometry']['location']['lat'],
       sep='\n')
 ```
 
-Also note that we used a numerical index - `[0]` - to access the first (zero-indexed) `dict` in the Python `list` typed value associated with the `results` key in the original `postcode_dict2` `dict`.
+Also note that we used a numerical index – `[0]` – to access the first (zero-indexed) `dict` in the Python `list` typed value associated with the `results` key in the original `postcode_dict2` `dict`.
 
 ```python
 type(postcode_dict2['results'])
@@ -195,6 +195,8 @@ print(postcode_dict2['results'][0]['geometry']['location'],
       postcode_dict2['results'][0]['geometry']['viewport']['southwest'],
       sep='\n')
 ```
+
+<!-- TODO: JD: is the following Python cell needed? -->
 
 ```python
 
