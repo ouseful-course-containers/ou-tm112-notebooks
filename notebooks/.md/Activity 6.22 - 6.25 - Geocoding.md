@@ -13,7 +13,7 @@ jupyter:
     name: python3
 ---
 
-# Activity 6.22–6.25 Geocoding
+# Activities 6.22–6.25 Geocoding
 
 In this notebook, you will learn how to geocode different sorts of location data by making requests to several online APIs for latitude and longitude coordinates associated with those locations.
 
