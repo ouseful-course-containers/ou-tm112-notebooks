@@ -112,7 +112,7 @@ elif APIkey is not None:
     
 if url:
     #Make the request
-    r = requests.post(url, headers=header,json=postjson)
+    r = requests.post(url, json=postjson)
     
     if not r.ok:
         # display the response if something went wrong...
