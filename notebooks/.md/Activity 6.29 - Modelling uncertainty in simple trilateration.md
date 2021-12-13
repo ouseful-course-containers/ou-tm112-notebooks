@@ -6,7 +6,7 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.11.4
+      jupytext_version: 1.11.5
   kernelspec:
     display_name: Python 3
     language: python
@@ -30,6 +30,7 @@ The location of a target receiver is identified as a red dot. The dark blue area
 __Move the sliders to change the relative locations and ranges of each of the cell towers. See how it affects the uncertainty in determining location based on the ability to detect two or more cell towers and a knowledge of their locations.__
 
 ```python extensions={"jupyter_dashboards": {"version": 1, "views": {"grid_default": {"hidden": true}, "report_default": {"hidden": true}}}}
+# NOTE THAT THE WIDGETS USED IN THIS DEMO DO NOW TOWK IN THE INTERACTIVE TEXTBOOK VIEW
 %matplotlib inline
 import tridash
 ```
