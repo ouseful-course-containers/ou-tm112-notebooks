@@ -6,7 +6,7 @@ jupyter:
       extension: .md
       format_name: markdown
       format_version: '1.3'
-      jupytext_version: 1.11.4
+      jupytext_version: 1.11.5
   kernelspec:
     display_name: Python 3
     language: python
@@ -116,7 +116,7 @@ if url:
     
     if not r.ok:
         # display the response if something went wrong...
-        r.text
+        print(r.text)
 ```
 
 If the location of the devices with the specified MAC addresses are known, a location is determined and returned as a latitude / longitude pair and a specified accuracy.
