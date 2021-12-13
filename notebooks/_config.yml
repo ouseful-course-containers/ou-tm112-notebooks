@@ -18,7 +18,7 @@ launch_buttons:
 
 repository:
   url                       : https://github.com/ouseful-course-containers/ou-tm112-notebooks/  # The URL to your book's repository
-  path_to_book              : notebooks/  # A path to your book's folder, relative to the repository root.
+  path_to_book              : work/  # A path to your book's folder, relative to the repository root.
   branch                    : master 
 
 html:
