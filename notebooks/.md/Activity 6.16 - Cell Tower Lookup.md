@@ -34,7 +34,7 @@ In this activity you will see how to call the API services *in principle*, if no
 
 If you use your browser developer tools to monitor your browser's network activity as you lookup a cell tower ID using the OpenCellID webservice, you might notice a request is made to a webservice that is used to lookup the location of the cell tower :
 
-![image.png](attachment:image.png)
+![OpenCellID website - API call for cell tower geolocation from cell tower identifying data](images/OpenCelliD_api_call.png)
 
 The request URL has the form:
 
