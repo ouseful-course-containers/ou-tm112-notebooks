@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Activity 6.22 - 6.25 Geocoding &#8212; TM112 Location Based Computing Notebooks</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,12 +19,8 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -31,23 +28,26 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe,.cell"
-        const thebe_selector_input = "pre,.cell_input div.highlight"
-        const thebe_selector_output = ".output,.cell_output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
@@ -55,10 +55,27 @@
     <link rel="next" title="Activity 6.20 - Locating Nearby WiFi Hotspots" href="Activity%206.20%20-%20Locating%20Nearby%20Wifi%20Hotspots.html" />
     <link rel="prev" title="Activity 6.16 - Cell Tower Lookup" href="Activity%206.16%20-%20Cell%20Tower%20Lookup.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -67,9 +84,10 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -87,14 +105,15 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Location%20Based%20Computing.html">
-   Location Based Computing
-  </a>
- </li>
-</ul>
-<p class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Location%20Based%20Computing.html">
+                    Location Based Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Block 2 Unit 2
  </span>
@@ -126,7 +145,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Block 3 Unit 2
  </span>
@@ -144,7 +163,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Bonus Features
  </span>
@@ -156,7 +175,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Appendices
  </span>
@@ -170,94 +189,182 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/Activity 6.22 - 6.25 - Geocoding.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/ouseful-course-containers/ou-tm112-notebooks/master?urlpath=tree/work/Activity 6.22 - 6.25 - Geocoding.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <button type="button" class="btn btn-secondary topbarbtn"
-            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
-                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/ouseful-course-containers/ou-tm112-notebooks/master?urlpath=tree/work/Activity 6.22 - 6.25 - Geocoding.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="initThebeSBT()"
+  class="headerbtn headerbtn-launch-thebe"
+  data-toggle="tooltip"
+data-placement="left"
+title="Launch Thebe"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="headerbtn__text-container">Live Code</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Activity 6.22 - 6.25 - Geocoding.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#activity-6-22-geocoding-an-address-using-an-api">
    Activity 6.22 - Geocoding an address using an API
@@ -321,17 +428,96 @@
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Activity 6.22 - 6.25 Geocoding</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#activity-6-22-geocoding-an-address-using-an-api">
+   Activity 6.22 - Geocoding an address using an API
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#optional-activities">
+     Optional Activities
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#activity-6-23-geocoding-addresses-and-postcodes">
+   Activity 6.23 - Geocoding addresses and postcodes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#looking-at-the-data-object-returned-from-the-postcodes-io-api">
+     Looking at the data object returned from the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       postcodes.io
+      </span>
+     </code>
+     API
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parsing-the-postcodes-io-json-data">
+     Parsing the
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       postcodes.io
+      </span>
+     </code>
+     JSON data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Optional Activities
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#activity-6-24-geocoding-an-ip-address">
+   Activity 6.24 - Geocoding an IP address
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#activity-6-25-reverse-geocoding-a-postcode">
+   Activity 6.25 - Reverse geocoding a postcode
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="activity-6-22-6-25-geocoding">
-<h1>Activity 6.22 - 6.25 Geocoding<a class="headerlink" href="#activity-6-22-6-25-geocoding" title="Permalink to this headline">¶</a></h1>
+<h1>Activity 6.22 - 6.25 Geocoding<a class="headerlink" href="#activity-6-22-6-25-geocoding" title="Permalink to this headline">#</a></h1>
 <p>In this notebook, you will learn how to geocode different sorts of location data by making requests to several online APIs (<em>Application Programming Interface</em>) for latitude and longitude co-ordinates associated with those locations.</p>
 <p>The aim of the notebook is <em>not</em> to teach you formal approaches for working with APIs or the data that is returned from them. Instead, it’s something to whet your curiosity. Something to show you how, with a few lines of Python code, you can start to work with live, third-party datasources and online services to perform real-world programming tasks.</p>
 <p>If something doesn’t work: <em>DON’T PANIC</em>. You won’t break your computer and you won’t break the internet. And you won’t fail the module if you just move on!</p>
@@ -344,7 +530,7 @@
 </ul>
 <p><a name="addresses"></a></p>
 <div class="section" id="activity-6-22-geocoding-an-address-using-an-api">
-<h2>Activity 6.22 - Geocoding an address using an API<a class="headerlink" href="#activity-6-22-geocoding-an-address-using-an-api" title="Permalink to this headline">¶</a></h2>
+<h2>Activity 6.22 - Geocoding an address using an API<a class="headerlink" href="#activity-6-22-geocoding-an-address-using-an-api" title="Permalink to this headline">#</a></h2>
 <p>When Google Maps first appeared in 2005, it existed primarily as a browser based application. Developers soon started to identify the remote Google services that the application relied on and an official API soon followed, along with APIs for other geo-related services such as geocoding.</p>
 <p>Since then, a wide range of other providers have opened up publicly accessible geo-related services, including openly licensed mapping services such as OpenStreetmap, as well as geocoding and geolcation services.</p>
 <p>Many of these services are accessed programmatically using an API. Some of them, such as the Google APIs, require personal API keys which are associated with registered users and can be used to track, and bill for, usage. Other services, such as Open Street Map, and its associated <a class="reference external" href="https://nominatim.org/release-docs/develop/api/Search/">Nominatim</a> service, still publish open endpoints that <em>do not</em> require an API key.</p>
@@ -378,7 +564,7 @@
 </div>
 <p>Try rerunning the previous cell with an address that is familiar to you. Does the API find it?</p>
 <div class="section" id="optional-activities">
-<h3>Optional Activities<a class="headerlink" href="#optional-activities" title="Permalink to this headline">¶</a></h3>
+<h3>Optional Activities<a class="headerlink" href="#optional-activities" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>try to display the location of an address you have geolocated on a map using <code class="docutils literal notranslate"><span class="pre">folium_magic</span></code>. Remember, you can pass in the co-ordinates literally; for example: <code class="docutils literal notranslate"><span class="pre">%folium_map</span> <span class="pre">-m</span> <span class="pre">48.8584,2.2945</span> <span class="pre">-z</span> <span class="pre">17</span></code></p></li>
 </ul>
@@ -400,14 +586,14 @@
 </div>
 </div>
 <div class="section" id="activity-6-23-geocoding-addresses-and-postcodes">
-<h2>Activity 6.23 - Geocoding addresses and postcodes<a class="headerlink" href="#activity-6-23-geocoding-addresses-and-postcodes" title="Permalink to this headline">¶</a></h2>
+<h2>Activity 6.23 - Geocoding addresses and postcodes<a class="headerlink" href="#activity-6-23-geocoding-addresses-and-postcodes" title="Permalink to this headline">#</a></h2>
 <p>Postcodes are a widely used form of location data, typically capable of identifying a location to a resolution of a few hundred square metres.</p>
 <p>There are several online services that will return geolocation information given a postcode. You have alreay seen how the Google geolocation API can geocode an address, and in many cases it can also geocode a postcode if it can identify it as such; providing a postcode + country name as the address can make this more reliable.</p>
 <p>As you are perhaps starting to see from these notebook activities, data is often returned from webservices using the JSON (Javascript Object Notation) data format, although some APIs allow you to specify other formats such as XML.</p>
 <p>(One advantage of the JSON response is that it can be immediately consumed by a Javascript script called from inside a webpage.)</p>
 <p>JSON and XML both allow data to be represented in a structured, <em>tree</em> based hierarchical format. In this notebook, as well exploring a new API published via the <em><a class="reference external" href="http://postcodes.io">postcodes.io</a></em> website, we’ll start to look in a little bit more detail at how the JSON response is structured.</p>
 <div class="section" id="looking-at-the-data-object-returned-from-the-postcodes-io-api">
-<h3>Looking at the data object returned from the <code class="docutils literal notranslate"><span class="pre">postcodes.io</span></code> API<a class="headerlink" href="#looking-at-the-data-object-returned-from-the-postcodes-io-api" title="Permalink to this headline">¶</a></h3>
+<h3>Looking at the data object returned from the <code class="docutils literal notranslate"><span class="pre">postcodes.io</span></code> API<a class="headerlink" href="#looking-at-the-data-object-returned-from-the-postcodes-io-api" title="Permalink to this headline">#</a></h3>
 <p>The <em><a class="reference external" href="http://postcodes.io">postcodes.io</a></em> API returns data as hierarchical, tree based JSON object. The tree has the following form:</p>
 <p><img alt="Hierarchical structure of postocdes api data, showire results tree with latitude, longitude and codes children, and codes showing admin_district and parish district" src="_images/postodes_io_struct.png" /></p>
 <!--- http://blockdiag.com/en/blockdiag/demo.html
@@ -456,7 +642,7 @@
 <p>Try rerunning the previous cell using different postcodes - can the service locate your home postcode?</p>
 </div>
 <div class="section" id="parsing-the-postcodes-io-json-data">
-<h3>Parsing the <code class="docutils literal notranslate"><span class="pre">postcodes.io</span></code> JSON data<a class="headerlink" href="#parsing-the-postcodes-io-json-data" title="Permalink to this headline">¶</a></h3>
+<h3>Parsing the <code class="docutils literal notranslate"><span class="pre">postcodes.io</span></code> JSON data<a class="headerlink" href="#parsing-the-postcodes-io-json-data" title="Permalink to this headline">#</a></h3>
 <p>Once we have retrieved the data from the API, and cast it as a <em>python</em> data object, we can look inside it programmatically.</p>
 <p>We can also create variables that contain subsets of the response data.</p>
 <div class="cell docutils container">
@@ -491,7 +677,7 @@
 </div>
 </div>
 <div class="section" id="id1">
-<h3>Optional Activities<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3>Optional Activities<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>use <code class="docutils literal notranslate"><span class="pre">folium</span> <span class="pre">magic</span></code> to map the location of an address you have provided;</p></li>
 <li><p>see if you can create a variable that contains the formatted address of a location object retrieved from the <a class="reference external" href="http://postcods.io">postcods.io</a> API;</p></li>
@@ -509,7 +695,7 @@
 </div>
 </div>
 <div class="section" id="activity-6-24-geocoding-an-ip-address">
-<h2>Activity 6.24 - Geocoding an IP address<a class="headerlink" href="#activity-6-24-geocoding-an-ip-address" title="Permalink to this headline">¶</a></h2>
+<h2>Activity 6.24 - Geocoding an IP address<a class="headerlink" href="#activity-6-24-geocoding-an-ip-address" title="Permalink to this headline">#</a></h2>
 <p>As well as looking up geolocation data for a <em>postal</em> address, we can also try to look up a location based on the IP address of a computer. There are seveal websites that allow you to lookup the IP address of the device you are using to connect to the internet, and several webservices too.</p>
 <p>One such service is the Amazon Web Servies (AWS) CheckIP service: <a class="reference external" href="http://checkip.amazonaws.com/">http://checkip.amazonaws.com/</a> .</p>
 <p>We <em>could</em> look up the IP address of the computer the notebooks are running on, but that would return the IP address of the <em>server</em> the notebooks are running on:</p>
@@ -564,7 +750,7 @@
 <p><a name="revgeopostcode"></a></p>
 </div>
 <div class="section" id="activity-6-25-reverse-geocoding-a-postcode">
-<h2>Activity 6.25 - Reverse geocoding a postcode<a class="headerlink" href="#activity-6-25-reverse-geocoding-a-postcode" title="Permalink to this headline">¶</a></h2>
+<h2>Activity 6.25 - Reverse geocoding a postcode<a class="headerlink" href="#activity-6-25-reverse-geocoding-a-postcode" title="Permalink to this headline">#</a></h2>
 <p><em>Reverse geocoding</em> refers to the ability to go <em>from</em> a geocoded location, represented as a latitude/longitude pair, for example, back to an address or location.</p>
 <p>The <em><a class="reference external" href="http://postcodes.io">postcodes.io</a></em> service supports reverse geocoding by accpeting a latitude/longitude pair and returning the postcode area associated with it, along with a data about other admonistrative gepgraphy regions that the location falls within.</p>
 <div class="cell docutils container">
@@ -637,7 +823,7 @@
 </div>
 </div>
 <div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>In this notebook, you have learned how to geocode several different sorts of location identifer - postcodes, postal addresses and IP addresses.</p>
 <p>You have also seen how we can take the JSON data returned from the geolocation services and parse it as python dict that we can then start to work <em>as data</em>, for example, by plotting markers associated with identified locations on an interactive map.</p>
 </div>
@@ -665,54 +851,48 @@
 
               </div>
               
-        
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="Activity%206.16%20-%20Cell%20Tower%20Lookup.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Activity 6.16 - Cell Tower Lookup</p>
-            </div>
-        </a>
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="Activity%206.16%20-%20Cell%20Tower%20Lookup.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Activity 6.16 - Cell Tower Lookup</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Activity%206.20%20-%20Locating%20Nearby%20Wifi%20Hotspots.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Activity 6.20 - Locating Nearby WiFi Hotspots</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="Activity%206.20%20-%20Locating%20Nearby%20Wifi%20Hotspots.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Activity 6.20 - Locating Nearby WiFi Hotspots</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By Tony Hirst, on behalf of the OU TM112 Module Team<br/>
-        
-            &copy; Copyright The Open University, 2018-2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Tony Hirst, on behalf of the OU TM112 Module Team<br/>
+  
+      &copy; Copyright The Open University, 2018-2021.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
+
   </body>
 </html>

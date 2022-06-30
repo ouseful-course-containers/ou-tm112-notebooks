@@ -50,11 +50,10 @@ The following walk through demonstrates the steps used to make a request to that
 
 To call the API, or look up a cell tower location using a third party web app with its own API access, we need four pieces of data:
 
-    - the network operator mobile country code (MCC): for example, the UK MCC code is 234
-    - the mobile network code (MNC): for example, the Vodafone UK MNC is 15
-    - the cell tower location area code (LAC): for example, 24708
-    - the cell tower cell ID (CellID): for example, 2561566
-
+- the network operator mobile country code (MCC): for example, the UK MCC code is 234
+- the mobile network code (MNC): for example, the Vodafone UK MNC is 15
+- the cell tower location area code (LAC): for example, 24708
+- the cell tower cell ID (CellID): for example, 2561566
 
 To call the service, we construct a URL as defined for a particular API and make a request to that URL using the *python* `requests` package.
 
