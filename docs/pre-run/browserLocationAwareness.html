@@ -154,11 +154,10 @@
 		            type: "GET",
 		            success: function(json) {
 							const [ip_latitude, ip_longitude] = json.loc.split(',');
-				    $('#resultsip').append('ssd '+JSON.stringify(json))
-			                //$('#resultsip').append('<div><p>Co-ordinates for '+json[0].ip+' registered in '+json.city+', '+json.region+' by '+json.org+'</p>');
-                            		//$('#resultsip').append('<ul><li>Latitude : ' + ip_latitude+ '</li>' +
-                                        //            '<li>Longitude: ' + ip_longitude+ '</li></ul></div>'
-                                        //            +'<div>Raw JSON response:<br/><pre><code class="language-css">'+JSON.stringify(json, null, "\t")+'</code></pre></div>');
+			                $('#resultsip').append('<div><p>Co-ordinates for '+jsonip+' registered in '+json.city+', '+json.region+' by '+json.org+'</p>');
+                            		$('#resultsip').append('<ul><li>Latitude : ' + ip_latitude+ '</li>' +
+                                                    '<li>Longitude: ' + ip_longitude+ '</li></ul></div>'
+                                                    +'<div>Raw JSON response:<br/><pre><code class="language-css">'+JSON.stringify(json, null, "\t")+'</code></pre></div>');
 		            },
 		            error: function(data) {
 		            	console.error(data);
@@ -166,6 +165,7 @@
 	            });
                 })
             });
+
         </script>
 	<hr>
 
