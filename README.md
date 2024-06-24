@@ -1,5 +1,7 @@
 # OU TM112 Jupyter Notebook Activities
 
+[THIS REPO IS CURRENTLY DEPRECATED — OUT OF SYNCH WITH https://github.com/ouseful-demos/jupyterlite-tm112-demo WHICH HAS THE LATEST MAINTAINED VERSION OF NOTEBOOKS (FEB 2024+) ::::: SEE ALSO CORRESPONDING ONLINE HTML BOOK AT  https://ouseful-demos.github.io/jupyterlite-tm112-demo/book_output/ ]
+
 Run live interactive notebook activities here: [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/ouseful-course-containers/ou-tm112-notebooks/HEAD?urlpath=tree/work)
 
 See interactive HTML book of materials here: https://ouseful-course-containers.github.io/ou-tm112-notebooks/
