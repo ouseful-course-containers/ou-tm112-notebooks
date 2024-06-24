@@ -23,47 +23,48 @@
        <div>This web page provides several working examples of how geolocation services
          can be accessed from the browser.</div>
 
-	<hr/>
+	<hr>
 	<a name="browserlocation"></a><h2>Activity: Browser location lookup</h2>
         <div>Click the <em>Browser geolocate...</em> button to get your coordinates from the browser location service.</div>
 	<div>You will need to grant the browser permission to use location services.
     Note this is a "black box" lookup - you don't get to see what information the browser passes to the geolocation lookup service.</div>
-        <button onclick="getLocation()" id='geolocate'>Browser geolocate...</button>
-        <div id="demo"></div><br/>
+        <button onclick="getLocation()" id="geolocate">Browser geolocate...</button>
+        <div id="demo"></div><br>
 
-        <hr/>
+        <hr>
 
 	<a name="geocoding"></a><h2>Activity: Geocoding demo</h2>
 
-        <div>Enter an address to try the Google Maps API geocoder:</div>
-        <input type="text" id="query" size=80 /><button id='geocode'>Get Coordinates for geocoded address</button>
+        <div>Enter an address to try the OpenStreetMap Nominatim API geocoder:</div>
+        <input type="text" id="query" size="80"><button id="geocode">Get Coordinates for geocoded address</button>
         <div id="results"></div>
 
-	<hr/>
+	<hr>
 
 	<a name="postcode"></a><h2>Activity: Postcode Geocoding demo</h2>
-	<div>Get random postcode: <button id='getrandpc'>Use random postcode</button></div>
+	<div>Get random postcode: <button id="getrandpc">Use random postcode</button></div>
 	
         <div>Enter a postcode to try the postcodes.io API geocoder:</div>
-        <input type="text" id="querypc" size=80 /><button id='geocodepc'>Get Coordinates for geocoded postcode</button>
+        <input type="text" id="querypc" size="80"><button id="geocodepc">Get Coordinates for geocoded postcode</button>
         <div id="resultspc"></div>
 
-        <hr/>
-        
+        <hr>
+
+		
     <a name="reversepostcode"></a><h2>Activity: Reverse Geocoding to Postcode demo</h2>
-        <div>Enter latitide and longitude in the form <tt>LATITUDE,LONGITUDE</tt> to try the postcodes.io API reverse geocoder:</div>
-        <input type="text" id="querypcrev" size=80 value="52.0249147315159,  -0.709747474196332" /><button id='geocodepcrev'>Get Coordinates for geocoded postcode</button>
+        <div>Enter latitude and longitude in the form <tt>LATITUDE,LONGITUDE</tt> to try the postcodes.io API reverse geocoder:</div>
+        <input type="text" id="querypcrev" size="80" value="52.0249147315159,  -0.709747474196332"><button id="geocodepcrev">Get Coordinates for geocoded postcode</button>
         <div id="resultspcrev"></div>
 
-        <hr/>
+        <hr>
 
 	<a name="ipaddress"></a><h2>Activity: IP based Geocoding Demo</h2>
 
-        <div>IP based geolookup</div>
-        <button id='geoip'>Get Coordinates for IP address</button>
+        <div>IP based geolookup using <tt>ipinfo.io</tt></div>
+        <button id="geoip">Get Coordinates for IP address</button>
         <div id="resultsip"></div>
 </div>
-        <script language='javascript'>
+        <script language="javascript">
             //Define a function to call the browser geolocation service
             function getLocation() {
                 if (navigator.geolocation) {
@@ -80,17 +81,23 @@
             }
             $(document).ready(function(){
                 $("#geocode").click(function(){
-                    //The home of the Google maps geocoder API
-                    var gmapsurl="https://maps.googleapis.com/maps/api/geocode/json";
-                    var query = $("#query").val()
-                    $.getJSON(gmapsurl,{ address: query, sensor: "false"}, function(json){
-                        //Display the latitude and longitude
-                        $('#results').append('<div><p>Co-ordinates for '+query+'</p>');
-                        $('#results').append('<ul><li>Latitude : ' + json.results[0].geometry.location.lat+ '</li>' +
-                                             '<li>Longitude: ' + json.results[0].geometry.location.lng+ '</li></ul></div>'
+                    //The home of the OpenStreetmap Nominatim geocoder API
+					var query = $("#query").val()
+                    var osmurl=`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query)}`;
+                    $.ajax({url: osmurl,
+		            	type: "GET",
+		            	success: function(json) {
+                        	//Display the latitude and longitude
+                        	$('#results').append('<div><p>Co-ordinates for '+query+'</p>');	
+                        	$('#results').append('<ul><li>Details:'+json[0].display_name+'</li><li>Latitude : ' + json[0].lat+ '</li>' +
+                                             '<li>Longitude: ' + json[0].lon+ '</li></ul></div>'
                                              + '<div>Raw JSON response:<br/><pre><code class="language-css">'+JSON.stringify(json, null, "\t")+'</code></pre></div>');
-                    });
-                });
+                    },
+		            error: function(data) {
+		            	console.error(data);
+		            }
+				});
+        	});
 
 
 		//random pc ------------------------
@@ -143,12 +150,13 @@
 		
 		//geocode IP Adress ------------------------
                 $("#geoip").click(function(){
-                    $.ajax({url: "https://freegeoip.net/json/",
+                    $.ajax({url: "https://ipinfo.io/json/",
 		            type: "GET",
 		            success: function(json) {
-			                $('#resultsip').append('<div><p>Co-ordinates for '+json.ip+' registered in '+json.city+', '+json.country_name+'</p>');
-                            		$('#resultsip').append('<ul><li>Latitude : ' + json.latitude+ '</li>' +
-                                                    '<li>Longitude: ' + json.longitude+ '</li></ul></div>'
+							const [ip_latitude, ip_longitude] = json.loc.split(',');
+			                $('#resultsip').append('<div><p>Co-ordinates for '+json[0].ip+' registered in '+json.city+', '+json.region+' by '+json.org+'</p>');
+                            		$('#resultsip').append('<ul><li>Latitude : ' + ip_latitude+ '</li>' +
+                                                    '<li>Longitude: ' + ip_longitude+ '</li></ul></div>'
                                                     +'<div>Raw JSON response:<br/><pre><code class="language-css">'+JSON.stringify(json, null, "\t")+'</code></pre></div>');
 		            },
 		            error: function(data) {
@@ -158,7 +166,8 @@
                 })
             });
         </script>
-	<hr/>
+	<hr>
+
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
