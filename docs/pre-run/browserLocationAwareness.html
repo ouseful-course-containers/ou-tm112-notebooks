@@ -148,9 +148,9 @@
 	            });
 		});
 		
-		//geocode IP Adress ------------------------
+		//geocode IP Address ------------------------
                 $("#geoip").click(function(){
-                    $.ajax({url: "https://ipinfo.io/json/",
+                    $.ajax({url: "https://ipinfo.io/json",
 		            type: "GET",
 		            success: function(json) {
 							const [ip_latitude, ip_longitude] = json.loc.split(',');
